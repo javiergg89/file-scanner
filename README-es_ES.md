@@ -28,6 +28,8 @@ En un Core i9-13900K con un SSD NVMe (Samsung 980 PRO) escanea 2 millones de arc
 
 Descarga `FileScanner-Setup-x.y.z.exe` desde [Releases](https://github.com/javiergg89/file-scanner/releases/latest) y ejecútalo. Por defecto se instala para el usuario actual, sin permisos de administrador. Necesita Windows 10 versión 2004 o posterior, x64. Incluye los runtimes de .NET y de Windows App SDK; no hace falta instalar nada más.
 
+Alternativa portable: `FileScanner-x.y.z-portable.exe` es la app entera en un solo archivo, sin instalador ni carpeta. Ponlo donde quieras y ejecútalo. No añade entrada en el menú Inicio ni en el menú contextual del Explorador, y la primera vez tarda un poco más en arrancar (se descomprime en una carpeta temporal).
+
 El instalador no tiene firma de código, así que SmartScreen puede bloquear la primera ejecución. Elige *Más información* y luego *Ejecutar de todas formas*. Para comprobar que lo generó el workflow de release de este repositorio, ejecuta `gh attestation verify FileScanner-Setup-x.y.z.exe -R javiergg89/file-scanner`.
 
 ## Desarrollo

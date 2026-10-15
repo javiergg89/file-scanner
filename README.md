@@ -26,6 +26,8 @@ On a Core i9-13900K with an NVMe SSD (Samsung 980 PRO) it scans 2 million files 
 
 Download `FileScanner-Setup-x.y.z.exe` from [Releases](https://github.com/javiergg89/file-scanner/releases/latest) and run it. By default it installs for the current user, without administrator rights. Needs Windows 10 version 2004 or later, x64. It includes the .NET and Windows App SDK runtimes; nothing else needs to be installed.
 
+Portable alternative: `FileScanner-x.y.z-portable.exe` is the whole app in one file, with no installer and no folder. Put it anywhere and run it. It has no Start menu entry or Explorer context menu, and it starts a little slower the first time (it unpacks itself to a temporary folder).
+
 The installer is not code-signed, so SmartScreen may block the first run. Choose *More info*, then *Run anyway*. To check that this repository's release workflow built it, run `gh attestation verify FileScanner-Setup-x.y.z.exe -R javiergg89/file-scanner`.
 
 ## Development
