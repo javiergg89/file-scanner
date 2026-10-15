@@ -4,9 +4,9 @@ English · [Español](how-to-use-es_ES.md)
 
 ## Choose what to scan
 
-The app scans your home folder when it opens. To change that:
+The app scans the system drive (usually C:) when it opens. To change that:
 
-1. Click the button in the title bar that shows what is scanned (*Home folder* at first).
+1. Click the button in the title bar that shows what is scanned (*C:* at first).
 2. Check *Home folder*, *Program Files*, *Program Files (x86)*, *ProgramData* or a whole drive (*Entire drive C: · 120 GB used*).
 3. Click *Scan*.
 
@@ -19,7 +19,7 @@ To scan any other folder, including a network share, use one of these:
 - Right-click the folder or a drive in File Explorer and choose *Scan with File Scanner*. The installer adds this item, in the language chosen during setup.
 - Run `FileScanner.exe "D:\Photos"` from a terminal.
 
-The app then scans only that folder. If the folder does not exist, it scans your home folder instead. The folder stays in the scope menu until you close the app, so you can combine it with the other choices and click *Scan* again.
+The app then scans only that folder. If the folder does not exist, it scans the system drive instead. The folder stays in the scope menu until you close the app, so you can combine it with the other choices and click *Scan* again.
 
 ## Read the top figures
 
@@ -36,7 +36,7 @@ The row under the title bar has four figures.
 
 The left panel has six tabs: *Rings*, *Map*, *List*, *Types*, *Largest* and *Duplicates*.
 
-In *Rings* and *Map*, click a segment or tile to open that folder, or click *Files* to choose files to delete in the right panel. To go up, click the center of the rings, press Backspace or use the mouse back button. The info button next to *Disk usage* shows these steps. The tooltip of each segment or tile shows its path, size and number of files.
+In *Rings* and *Map*, click a segment or tile to open that folder, or click *Files* to choose files to delete in the right panel. To go up, click the center of the rings, press Backspace or use the mouse back button. The info button next to *Disk usage* shows these steps. Hover a segment or tile and its path replaces the path bar at once, with its size and number of files in the box under it on the left. The box on the right shows the totals of the open folder.
 
 Right-click a segment or tile for more options: *Open* (only for folders with subfolders), *Open in File Explorer*, *Copy path*, *Export to CSV…*, *Choose what to delete here…*, *Add to "Chosen by you"* or *Remove from "Chosen by you"*, *Rescan this folder* and *Delete…*. On *Files* the menu has *Choose files to delete…* instead of *Choose what to delete here…*. Protected folders (see [Delete](#delete)) have no *Delete…* or *Chosen by you* items.
 
@@ -52,11 +52,13 @@ The *Chart colors* list under the chart switches between *Color by category* (th
 - Orange: 1 to 3 years.
 - Red: more than 3 years.
 
-In this mode the tooltip also shows that date. Folders checked for deletion are green in both modes.
+In this mode the box on the left also shows that date. Folders checked for deletion are green in both modes.
+
+The legend under the chart lists only the categories or ages on screen. Click one to highlight it in the chart and fade the rest; click it again to show all.
 
 ### Search for a folder
 
-1. Click the search box at the end of the path bar, or press Ctrl+F.
+1. Click the search box to the right of the tabs, or press Ctrl+F.
 2. Type part of a folder name. The box lists the 20 largest folders in the whole scan whose name contains the text, with location and size.
 3. Pick one, or press Enter for the first, to open it in the chart.
 
@@ -117,7 +119,7 @@ When some items could not be deleted (in use or access denied), the app says how
 
 The app never deletes your profile, AppData and its Local, LocalLow and Roaming folders, Desktop, Documents, Pictures, Videos, Music, Downloads, Windows, Program Files, Program Files (x86), ProgramData or a drive root, nor a folder that contains one of them. It can delete items inside them.
 
-Deleting inside Program Files, ProgramData or Windows needs administrator rights. The app runs without them, so it offers *Copy command* for what it could not delete. Run that command in PowerShell as administrator.
+Deleting inside Program Files, ProgramData or Windows needs administrator rights. The app starts without them, so when such a delete fails it offers *Restart as administrator*: Windows asks for consent and the app opens again, elevated, on the same folder. Then delete again. The settings menu has the same item. Running as administrator, the title says so, and dragging folders from File Explorer onto the window does not work (Windows blocks it). If something still cannot be deleted, the app offers *Copy command*; run that command in PowerShell as administrator.
 
 ### Copy a script instead
 
@@ -173,7 +175,7 @@ Each scan is saved, compressed, in `%LOCALAPPDATA%\FileScanner`. When you open t
 After that rescan the app compares both scans:
 
 - Folders that grew by 100 MB or more appear in *Has grown*, up to 10, largest growth first. A folder that grew only because of a subfolder already listed is left out.
-- The tooltip of each segment or tile shows its growth, for example "+2.3 GB since the scan 3 days ago".
+- Hovering a segment or tile shows its growth in the box on the left, for example "+2.3 GB since the scan 3 days ago".
 
 Click a row in *Has grown*, or press Enter or Space, to open that folder in the chart. Right-click it for the chart's menu.
 

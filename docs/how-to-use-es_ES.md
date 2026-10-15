@@ -6,9 +6,9 @@ La app se abre en inglés. Para pasarla a español, haz clic en el engranaje (*S
 
 ## Elegir qué escanear
 
-La app escanea tu carpeta personal al abrirse. Para cambiarlo:
+La app escanea la unidad del sistema (normalmente C:) al abrirse. Para cambiarlo:
 
-1. Haz clic en el botón de la barra de título que muestra qué se escanea (al principio, *Carpeta personal*).
+1. Haz clic en el botón de la barra de título que muestra qué se escanea (al principio, *C:*).
 2. Marca *Carpeta personal*, *Archivos de programa*, *Archivos de programa (x86)*, *ProgramData* o una unidad entera (*Unidad C: completa · 120 GB usados*).
 3. Haz clic en *Escanear*.
 
@@ -21,7 +21,7 @@ Para escanear cualquier otra carpeta, incluida una carpeta compartida de red, us
 - En el Explorador de archivos, haz clic derecho en la carpeta o en una unidad y elige *Escanear con File Scanner*. El instalador añade esta opción en el idioma elegido durante la instalación.
 - Ejecuta `FileScanner.exe "D:\Photos"` desde un terminal.
 
-La app escanea entonces solo esa carpeta. Si no existe, escanea tu carpeta personal. La carpeta sigue en el menú *Qué escanear* hasta que cierres la app, así que puedes combinarla con las demás opciones y hacer clic en *Escanear* otra vez.
+La app escanea entonces solo esa carpeta. Si no existe, escanea la unidad del sistema. La carpeta sigue en el menú *Qué escanear* hasta que cierres la app, así que puedes combinarla con las demás opciones y hacer clic en *Escanear* otra vez.
 
 ## Leer las cifras de arriba
 
@@ -38,7 +38,7 @@ La fila bajo la barra de título tiene cuatro cifras.
 
 El panel izquierdo tiene seis pestañas: *Anillos*, *Mapa*, *Lista*, *Tipos*, *Más grandes* y *Duplicados*.
 
-En *Anillos* y *Mapa*, haz clic en un sector o recuadro para entrar en esa carpeta, o en *Archivos* para elegir en el panel derecho qué archivos eliminar. Para subir, haz clic en el centro de los anillos, pulsa Retroceso o usa el botón atrás del ratón. El botón de información junto a *Uso del disco* muestra estos pasos. La información emergente de cada sector o recuadro muestra su ruta, tamaño y número de archivos.
+En *Anillos* y *Mapa*, haz clic en un sector o recuadro para entrar en esa carpeta, o en *Archivos* para elegir en el panel derecho qué archivos eliminar. Para subir, haz clic en el centro de los anillos, pulsa Retroceso o usa el botón atrás del ratón. El botón de información junto a *Uso del disco* muestra estos pasos. Al pasar el ratón por un sector o recuadro, su ruta sustituye al instante a la barra de ruta, y su tamaño y número de archivos aparecen en el recuadro de debajo, a la izquierda. El recuadro de la derecha muestra los totales de la carpeta abierta.
 
 Haz clic derecho en un sector o recuadro para ver más opciones: *Entrar* (solo en carpetas con subcarpetas), *Abrir en el Explorador de archivos*, *Copiar ruta*, *Exportar a CSV…*, *Elegir qué eliminar aquí…*, *Añadir a «Elegido por ti»* o *Quitar de «Elegido por ti»*, *Volver a escanear esta carpeta* y *Eliminar…*. En *Archivos* el menú tiene *Elegir qué archivos eliminar…* en vez de *Elegir qué eliminar aquí…*. Las carpetas protegidas (consulta [Eliminar](#eliminar)) no tienen *Eliminar…* ni las opciones de *Elegido por ti*.
 
@@ -54,11 +54,13 @@ La lista *Colorear el gráfico*, debajo del gráfico, cambia entre *Color por ca
 - Naranja: de 1 a 3 años.
 - Rojo: más de 3 años.
 
-En este modo la información emergente también muestra esa fecha. Las carpetas marcadas para eliminar son verdes en los dos modos.
+En este modo el recuadro de la izquierda también muestra esa fecha. Las carpetas marcadas para eliminar son verdes en los dos modos.
+
+La leyenda bajo el gráfico muestra solo las categorías o antigüedades que hay en pantalla. Pulsa una para resaltarla en el gráfico y atenuar el resto; púlsala otra vez para ver todo.
 
 ### Buscar una carpeta
 
-1. Haz clic en el cuadro de búsqueda al final de la barra de ruta, o pulsa Ctrl+F.
+1. Haz clic en el cuadro de búsqueda a la derecha de las pestañas, o pulsa Ctrl+F.
 2. Escribe parte del nombre de una carpeta. El cuadro muestra, de todo el escaneo, las 20 carpetas más grandes cuyo nombre contiene el texto, con su ubicación y tamaño.
 3. Elige una, o pulsa Intro para la primera, para entrar en ella en el gráfico.
 
@@ -119,7 +121,7 @@ Cuando algunos elementos no se pueden eliminar (en uso o con acceso denegado), l
 
 La app nunca elimina tu perfil, AppData y sus carpetas Local, LocalLow y Roaming, Escritorio, Documentos, Imágenes, Vídeos, Música, Descargas, Windows, Archivos de programa, Archivos de programa (x86), ProgramData ni la raíz de una unidad, ni una carpeta que contenga alguna de ellas. Sí puede eliminar lo que hay dentro.
 
-Eliminar dentro de Archivos de programa, ProgramData o Windows requiere permisos de administrador. La app funciona sin ellos, así que ofrece *Copiar comando* para lo que no pudo eliminar. Ejecuta ese comando en PowerShell como administrador.
+Eliminar dentro de Archivos de programa, ProgramData o Windows requiere permisos de administrador. La app arranca sin ellos, así que cuando una eliminación así falla ofrece *Reiniciar como administrador*: Windows pide confirmación y la app se abre de nuevo, con permisos, en la misma carpeta. Después vuelve a eliminarlo. El menú de ajustes tiene la misma opción. Como administrador, el título lo indica y no se pueden arrastrar carpetas desde el Explorador a la ventana (Windows lo bloquea). Si aun así algo no se puede eliminar, la app ofrece *Copiar comando*; ejecuta ese comando en PowerShell como administrador.
 
 ### Copiar un script en su lugar
 
@@ -175,7 +177,7 @@ Cada escaneo se guarda, comprimido, en `%LOCALAPPDATA%\FileScanner`. Cuando abre
 Después de ese nuevo escaneo, la app compara los dos:
 
 - Las carpetas que han crecido 100 MB o más aparecen en *Ha crecido*, hasta 10, de mayor a menor crecimiento. Una carpeta que solo ha crecido por una subcarpeta que ya está en la lista no aparece.
-- La información emergente de cada sector o recuadro muestra su crecimiento, por ejemplo «+2,3 GB desde el escaneo de hace 3 días».
+- Al pasar el ratón por un sector o recuadro, el recuadro de la izquierda muestra su crecimiento, por ejemplo «+2,3 GB desde el escaneo de hace 3 días».
 
 Haz clic en una fila de *Ha crecido*, o pulsa Intro o Espacio, para entrar en esa carpeta en el gráfico. Haz clic derecho en ella para ver el menú del gráfico.
 

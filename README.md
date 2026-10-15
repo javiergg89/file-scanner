@@ -2,7 +2,7 @@ English · [Español](README-es_ES.md)
 
 # File Scanner
 
-A Windows app that shows what takes up space in your home folder and deletes the caches, temporary files, crash dumps and old `node_modules` folders you check.
+A Windows app that shows what takes up space on your drive and deletes the caches, temporary files, crash dumps and old `node_modules` folders you check.
 
 Step-by-step guide: [How to use File Scanner](docs/how-to-use.md).
 
@@ -16,9 +16,9 @@ On a Core i9-13900K with an NVMe SSD (Samsung 980 PRO) it scans 2 million files 
 
 ## Features
 
-- Rings, map and list views, colored by category or by age, with folder search (Ctrl+F).
+- Rings, map and list views, colored by category or by age, with folder search (Ctrl+F). Hovering shows a folder's path and size at once; clicking a legend entry highlights that category.
 - Cleanup recommendations: *Safe to delete*, *Review first* and *Possible program leftovers*.
-- Delete to the Recycle Bin or permanently, or copy a PowerShell script to run yourself.
+- Delete to the Recycle Bin or permanently, or copy a PowerShell script to run yourself. When a delete needs administrator rights, the app offers to restart as administrator.
 - Space by file type, the 100 largest files and duplicate files.
 - English or Spanish, light or dark theme.
 

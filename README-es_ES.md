@@ -2,7 +2,7 @@
 
 # File Scanner
 
-Es una app de Windows que muestra qué ocupa espacio en tu carpeta personal y elimina las cachés, archivos temporales, volcados de memoria y carpetas `node_modules` antiguas que marques.
+Es una app de Windows que muestra qué ocupa espacio en tu disco y elimina las cachés, archivos temporales, volcados de memoria y carpetas `node_modules` antiguas que marques.
 
 Guía paso a paso: [Cómo usar File Scanner](docs/how-to-use-es_ES.md).
 
@@ -18,9 +18,9 @@ En un Core i9-13900K con un SSD NVMe (Samsung 980 PRO) escanea 2 millones de arc
 
 ## Funciones
 
-- Vistas de anillos, mapa y lista, coloreadas por categoría o por antigüedad, con búsqueda de carpetas (Ctrl+F).
+- Vistas de anillos, mapa y lista, coloreadas por categoría o por antigüedad, con búsqueda de carpetas (Ctrl+F). Al pasar el ratón se ven al instante la ruta y el tamaño de cada carpeta; al pulsar una categoría de la leyenda se resalta en el gráfico.
 - Recomendaciones de limpieza: *Seguro para eliminar*, *Revisar primero* y *Posibles restos de programas*.
-- Enviar a la Papelera de reciclaje, eliminar definitivamente o copiar un script de PowerShell para ejecutarlo tú.
+- Enviar a la Papelera de reciclaje, eliminar definitivamente o copiar un script de PowerShell para ejecutarlo tú. Si para eliminar hacen falta permisos de administrador, la app ofrece reiniciarse como administrador.
 - Espacio por tipo de archivo, los 100 archivos más grandes y archivos duplicados.
 - Inglés o español, tema claro u oscuro.
 
