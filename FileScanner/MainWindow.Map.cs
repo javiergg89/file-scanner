@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using FileScanner.Core;
+using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
@@ -25,24 +26,27 @@ public sealed partial class MainWindow
     static readonly FontFamily Mono = new("Cascadia Mono, Consolas");
     static readonly Color CleanColor = Color.FromArgb(255, 0x3C, 0xA0, 0x5A);
 
+    // Legend order. Green is not used here: it marks what is selected for deletion. Chosen for distance: the closest
+    // pair (that green and gray included) is 14 OKLab deltaE x100 apart; the previous set had pairs at 6.
     static readonly Dictionary<Category, (string Label, Color Color)> Categories = new()
     {
-        // Legend order. Green is not used here: it marks what is selected for deletion.
-        [Category.Code] = (Strings.Map.CategoryCode, Color.FromArgb(255, 0x8B, 0x7C, 0xF6)),
-        [Category.Games] = (Strings.Map.CategoryGames, Color.FromArgb(255, 0xE1, 0x57, 0x59)),
-        [Category.Media] = (Strings.Map.CategoryMedia, Color.FromArgb(255, 0xF2, 0x8E, 0x2B)),
-        [Category.Browsers] = (Strings.Map.CategoryBrowsers, Color.FromArgb(255, 0xED, 0xC9, 0x48)),
-        [Category.Communication] = (Strings.Map.CategoryCommunication, Color.FromArgb(255, 0x76, 0xB7, 0xB2)),
-        [Category.Editors] = (Strings.Map.CategoryEditors, Color.FromArgb(255, 0xB0, 0x7A, 0xA1)),
-        [Category.PackageCaches] = (Strings.Map.CategoryPackageCaches, Color.FromArgb(255, 0x4E, 0x79, 0xA7)),
-        [Category.Sdk] = (Strings.Map.CategorySdk, Color.FromArgb(255, 0x3C, 0xB4, 0xD2)),
-        [Category.AiModels] = (Strings.Map.CategoryAiModels, Color.FromArgb(255, 0xFF, 0x9D, 0xA7)),
-        [Category.Virtualization] = (Strings.Map.CategoryVirtualization, Color.FromArgb(255, 0x9C, 0x75, 0x5F)),
-        [Category.Cloud] = (Strings.Map.CategoryCloud, Color.FromArgb(255, 0xA0, 0xCB, 0xE8)),
-        [Category.Temp] = (Strings.Map.CategoryTemp, Color.FromArgb(255, 0xB5, 0xB3, 0x5C)),
-        [Category.Programs] = (Strings.Map.CategoryPrograms, Color.FromArgb(255, 0xE3, 0x77, 0xC2)),
-        [Category.Other] = (Strings.Map.CategoryOther, Color.FromArgb(255, 0x9A, 0x9A, 0x9A)),
+        [Category.Code] = (Strings.Map.CategoryCode, Rgb(0x7B56D8)),
+        [Category.Games] = (Strings.Map.CategoryGames, Rgb(0xCC342D)),
+        [Category.Media] = (Strings.Map.CategoryMedia, Rgb(0xE88B0E)),
+        [Category.Browsers] = (Strings.Map.CategoryBrowsers, Rgb(0xC1C736)),
+        [Category.Communication] = (Strings.Map.CategoryCommunication, Rgb(0x4FD9B4)),
+        [Category.Editors] = (Strings.Map.CategoryEditors, Rgb(0xAE8DFC)),
+        [Category.PackageCaches] = (Strings.Map.CategoryPackageCaches, Rgb(0x00829A)),
+        [Category.Sdk] = (Strings.Map.CategorySdk, Rgb(0x058DFA)),
+        [Category.AiModels] = (Strings.Map.CategoryAiModels, Rgb(0xF7A3A8)),
+        [Category.Virtualization] = (Strings.Map.CategoryVirtualization, Rgb(0x906F23)),
+        [Category.Cloud] = (Strings.Map.CategoryCloud, Rgb(0x89C4FB)),
+        [Category.Temp] = (Strings.Map.CategoryTemp, Rgb(0xB83997)),
+        [Category.Programs] = (Strings.Map.CategoryPrograms, Rgb(0xF36CC1)),
+        [Category.Other] = (Strings.Map.CategoryOther, Rgb(0x9A9A9A)),
     };
+
+    static Color Rgb(int rgb) => Color.FromArgb(255, (byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb);
 
     readonly ObservableCollection<DirNode> _crumbs = [];
     // Paths marked for deletion in any recommendation; drawn in green.
@@ -53,6 +57,10 @@ public sealed partial class MainWindow
     readonly SolidColorBrush _gap = new();
     // Folders whose children are visible in the chart, with their shape (which subfolders they had) at the last render.
     readonly Dictionary<DirNode, int> _drawnShapes = [];
+    // Groups (category or age band) of the shapes on screen: the legend lists only these.
+    readonly HashSet<string> _drawnGroups = [];
+    // Group picked in the legend: its shapes stay, the rest fade. Null when none.
+    string? _highlight;
     readonly AccessibilitySettings _accessibility = new();
     readonly UISettings _uiSettings = new();
     bool _highContrast;
@@ -89,12 +97,13 @@ public sealed partial class MainWindow
         _uiSettings.ColorValuesChanged += (_, _) => DispatcherQueue.TryEnqueue(ApplyContrast);
     }
 
-    // Legend for the current color mode: categories or age bands.
+    // Legend for the current color mode: categories or age bands, only those on screen (all before the first render).
     void FillLegend()
     {
         Legend.Children.Clear();
         Legend.RowDefinitions.Clear();
         IEnumerable<(string Label, Color Color)> groups = AgeColors ? Ages : Categories.Values;
+        if (_drawnGroups.Count > 0) groups = groups.Where(g => _drawnGroups.Contains(g.Label));
         int i = 0;
         foreach (var (label, color) in groups)
         {
@@ -169,6 +178,10 @@ public sealed partial class MainWindow
     {
         MapCanvas.Children.Clear();
         _drawnShapes.Clear();
+        var shownGroups = _drawnGroups.ToHashSet();
+        _drawnGroups.Clear();
+        // Removed shapes never raise PointerExited.
+        ClearHover();
         // The chart is hidden on the Duplicates tab; it draws when Rings or Map is selected again.
         if (DuplicatesView || ShownNode is not { } current) return;
         RefreshCleanable();
@@ -192,6 +205,26 @@ public sealed partial class MainWindow
         _renderedArea = Rounded(new Size(MapHost.ActualWidth, MapHost.ActualHeight));
         if (RingsView) RenderRings(current, MapHost.ActualWidth, MapHost.ActualHeight);
         else RenderTreemap(current, MapHost.ActualWidth, MapHost.ActualHeight);
+        // A highlighted group that left the screen (another folder or color mode) is dropped.
+        if (_highlight is not null && !_drawnGroups.Contains(_highlight)) _highlight = null;
+        if (!shownGroups.SetEquals(_drawnGroups)) FillLegend();
+        ApplyHighlight();
+    }
+
+    void Legend_Click(object sender, RoutedEventArgs e)
+    {
+        string label = (string)((FrameworkElement)sender).Tag;
+        _highlight = _highlight == label ? null : label;
+        FillLegend();
+        ApplyHighlight();
+    }
+
+    bool Faded(DirNode node) => _highlight is not null && GroupOf(node).Label != _highlight;
+
+    void ApplyHighlight()
+    {
+        foreach (var element in MapCanvas.Children.OfType<FrameworkElement>())
+            if (element.Tag is DirNode node) element.Opacity = Faded(node) ? 0.15 : 1;
     }
 
     // Recomputes the paths marked in any selection. Returns true if they differ from the last render.
@@ -208,7 +241,11 @@ public sealed partial class MainWindow
 
     Color ColorOf(DirNode node) => IsClean(node) ? CleanColor : GroupOf(node).Color;
 
-    void UpdatePathSize(DirNode node) => PathSize.Text = $"{DirNode.Format(node.Size)} · {FileCount(node)}";
+    void UpdatePathSize(DirNode node)
+    {
+        PathSizeText.Text = DirNode.Format(node.Size);
+        PathFilesText.Text = FileCount(node);
+    }
 
     static string FileCount(DirNode node) => Plural(node.FileCount, Strings.Map.FileOne, Strings.Map.FileMany);
 
@@ -229,16 +266,38 @@ public sealed partial class MainWindow
         || Math.Abs(shown.Size - _renderedSize) > shown.Size / 200;
 
     // Click or Enter opens the folder. Right click, Shift+F10 or the Menu key opens the context menu.
-    // The tooltip shows path, size, file count and, if any, growth since the saved snapshot.
+    // Hovering shows path, size, file count and, if any, last change and growth above the chart (no tooltip: it repeated them).
     // The node goes in Tag and the handlers are shared: a lambda that captures its own element forms a
     // .NET-COM cycle that WinUI never frees, and with thousands of shapes per render memory grows without bound.
     void Wire(FrameworkElement element, DirNode node)
     {
         element.Tag = node;
-        string growth = GrowthNote(node);
-        ToolTipService.SetToolTip(element, $"{node.Path}\n{DirNode.Format(node.Size)} · {FileCount(node)}{AgeNote(node)}{(growth.Length > 0 ? "\n" + growth : "")}");
+        _drawnGroups.Add(GroupOf(node).Label);
         element.Tapped += Element_Tapped;
         element.ContextRequested += Element_ContextRequested;
+        element.PointerEntered += Hover_PointerEntered;
+        element.PointerExited += Hover_PointerExited;
+    }
+
+    // While the pointer is over a shape, its path replaces the breadcrumb and the left box shows its size, at once.
+    void Hover_PointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        var node = (DirNode)((FrameworkElement)sender).Tag;
+        HoverPath.Text = node.Path;
+        HoverSize.Text = DirNode.Format(node.Size);
+        HoverFiles.Text = FileCount(node);
+        HoverNote.Text = string.Join("\n", new[] { AgeNote(node).TrimStart('\n'), GrowthNote(node) }.Where(n => n.Length > 0));
+        HoverNote.Visibility = HoverNote.Text.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        HoverPath.Visibility = HoverInfo.Visibility = Visibility.Visible;
+        Crumbs.Visibility = Visibility.Collapsed;
+    }
+
+    void Hover_PointerExited(object sender, PointerRoutedEventArgs e) => ClearHover();
+
+    void ClearHover()
+    {
+        HoverPath.Visibility = HoverInfo.Visibility = Visibility.Collapsed;
+        Crumbs.Visibility = Visibility.Visible;
     }
 
     // First chart level: a control that takes focus and that Narrator reads. Inner levels are not focusable:
@@ -292,9 +351,11 @@ public sealed partial class MainWindow
         GoUp();
     }
 
-    static void Segment_PointerEntered(object sender, PointerRoutedEventArgs e) => ((UIElement)sender).Opacity = 0.7;
+    void Segment_PointerEntered(object sender, PointerRoutedEventArgs e) => ((UIElement)sender).Opacity = 0.7;
 
-    static void Segment_PointerExited(object sender, PointerRoutedEventArgs e) => ((UIElement)sender).Opacity = 1;
+    // Back to the highlight state: faded if the legend picked another group.
+    void Segment_PointerExited(object sender, PointerRoutedEventArgs e) =>
+        ((FrameworkElement)sender).Opacity = Faded((DirNode)((FrameworkElement)sender).Tag) ? 0.15 : 1;
 
     MenuFlyout NodeMenu(DirNode node)
     {
@@ -389,7 +450,7 @@ public sealed partial class MainWindow
     void RenderRings(DirNode current, double width, double height)
     {
         double cx = width / 2, cy = height / 2;
-        double outer = Math.Min(width, height) / 2 - 6, hole = outer * 0.26;
+        double outer = Math.Min(width, height) / 2 - 6, hole = outer * 0.34;
         if (outer < 40) return;
         double ring = (outer - hole) / RingDepth;
         bool dark = Root.ActualTheme == ElementTheme.Dark;
@@ -439,7 +500,7 @@ public sealed partial class MainWindow
         var centerFill = _highContrast ? SystemColor(UIElementType.Window) : WithAlpha(GroupOf(current).Color, 0x50);
         center.Children.Add(new Ellipse { Fill = BrushOf(centerFill), Stroke = _gap });
         var label = new StackPanel { VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center, Spacing = 2 };
-        label.Children.Add(new TextBlock { Text = current.Name, FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, MaxWidth = hole * 1.6, TextTrimming = TextTrimming.CharacterEllipsis });
+        label.Children.Add(new TextBlock { Text = current.Name, FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, MaxWidth = hole * 1.7, TextTrimming = TextTrimming.CharacterEllipsis });
         // In a small chart the hole is narrower than the text: the Viewbox scales it down instead of letting it spill over the rings.
         label.Children.Add(new Viewbox
         {
@@ -490,7 +551,8 @@ public sealed partial class MainWindow
 
     // Color swatch and name. The name wraps in a narrow column ("Documentos y multimedia" did not fit at 1640 px),
     // so the swatch sits on the first line.
-    static Grid LegendItem(string label, Color color)
+    // A button: click shows that group in the chart and fades the rest; click again shows all.
+    Button LegendItem(string label, Color color)
     {
         var item = new Grid { ColumnSpacing = 6 };
         item.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -498,10 +560,21 @@ public sealed partial class MainWindow
         item.Children.Add(new Rectangle { Width = 9, Height = 9, RadiusX = 2, RadiusY = 2, Fill = new SolidColorBrush(color), VerticalAlignment = VerticalAlignment.Center });
         // One line per entry: a wrapped name makes its row taller and takes height from the chart. The tooltip shows it whole.
         var text = new TextBlock { Text = label, FontSize = 12, TextTrimming = TextTrimming.CharacterEllipsis };
-        ToolTipService.SetToolTip(item, label);
         Grid.SetColumn(text, 1);
         item.Children.Add(text);
-        return item;
+        bool picked = _highlight == label;
+        if (picked) text.FontWeight = FontWeights.SemiBold;
+        var button = new Button
+        {
+            Content = item, Tag = label, Padding = new Thickness(6, 2, 6, 2), BorderThickness = new Thickness(0),
+            HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
+            Background = picked ? (Brush)Application.Current.Resources["SubtleFillColorSecondaryBrush"] : new SolidColorBrush(Colors.Transparent),
+            Opacity = _highlight is null || picked ? 1 : 0.6,
+        };
+        AutomationProperties.SetName(button, label);
+        ToolTipService.SetToolTip(button, label);
+        button.Click += Legend_Click;
+        return button;
     }
 
     static Color WithAlpha(Color c, byte a) => Color.FromArgb(a, c.R, c.G, c.B);

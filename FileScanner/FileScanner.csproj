@@ -9,6 +9,7 @@
     <RootNamespace>FileScanner</RootNamespace>
     <AssemblyName>FileScanner</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <Platforms>x64</Platforms>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <SelfContained>true</SelfContained>
@@ -17,6 +18,9 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <!-- Puts FileScanner.pri (the compiled XAML) in the publish folder, even without MSIX. -->
     <EnableMsixTooling>true</EnableMsixTooling>
+    <!-- Warns about APIs that break in the portable single-file .exe (release.yml). Also keeps packages.lock.json the same
+         for both publishes: the analyzer pulls in Microsoft.NET.ILLink.Tasks either way. -->
+    <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +31,12 @@
     <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="2.3.9" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="2.3.12" />
     <PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="2.1.9" />
+  </ItemGroup>
+
+  <!-- App icon (a redesign of the original Scanner's): window and title bar. -->
+  <ItemGroup>
+    <Content Include="Assets\AppIcon.ico" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Assets\AppIcon.png" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <!-- Localized texts: Strings\<Area>.resx (English) and <Area>.es.resx (Spanish). -->

@@ -27,7 +27,9 @@ public sealed partial class MainWindow
 
     void ExplorerHeader_SizeChanged(object sender, SizeChangedEventArgs e)
     {
-        double available = e.NewSize.Width;
+        // The search box shares the tabs row.
+        SearchBox.Width = e.NewSize.Width < 640 ? 160 : 220;
+        double available = e.NewSize.Width - SearchBox.Width - 8;
         if (!_compactTabs)
         {
             ViewBar.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
@@ -49,12 +51,20 @@ public sealed partial class MainWindow
         }
     }
 
-    // Path row: below 640 px the search box shrinks; below 520 px the size and file count go (the chart centre
-    // and the footer show them too) so the path keeps some room.
+    // Path row: below 520 px the size and file count go (the chart centre and the footer show them too)
+    // so the path keeps some room.
     void CrumbsRow_SizeChanged(object sender, SizeChangedEventArgs e)
     {
-        SearchBox.Width = e.NewSize.Width < 640 ? 160 : 220;
         PathSize.Visibility = e.NewSize.Width < 520 ? Visibility.Collapsed : Visibility.Visible;
+        FitRings();
+    }
+
+    // Rings view: the chart also takes the height of the size boxes row. The circle leaves the top corners free,
+    // and the boxes, drawn on top, fit there. The treemap fills its whole area, so it stays below them.
+    void FitRings()
+    {
+        double boxes = CrumbsRow.RowDefinitions[1].ActualHeight + CrumbsRow.RowSpacing;
+        MapHost.Margin = new Thickness(0, RingsView ? -boxes : 0, 0, 0);
     }
 
     // About 140 px per legend entry: 5 columns in a wide panel, at least 3 (each extra row takes height from the chart).

@@ -3,7 +3,7 @@
   <!-- Shared by all projects. Raising <Version> in a commit to main publishes a release
        (see .github/workflows/release.yml). -->
   <PropertyGroup>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Product>File Scanner</Product>
     <Company>javiergg89</Company>
     <Copyright>Copyright (c) 2026 Javier Grimoin González. MIT License.</Copyright>

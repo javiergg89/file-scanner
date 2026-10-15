@@ -223,4 +223,7 @@
     <value>Couldn't empty the Recycle Bin (HRESULT 0x{0:X8}).</value>
     <comment>{0}: error code.</comment>
   </data>
+  <data name="RestartAsAdminHint" xml:space="preserve">
+    <value>Restart as administrator and delete it again.</value>
+  </data>
 </root>

@@ -42,6 +42,11 @@ public static partial class Shell
     // Absolute path: a bare "explorer.exe" could run a fake one from the current directory or the PATH.
     static readonly string Explorer = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe");
 
+    // Running as administrator (UAC elevated). Unelevated, deleting in Program Files, ProgramData or Windows fails.
+    public static bool IsElevated { get; } =
+        new System.Security.Principal.WindowsPrincipal(System.Security.Principal.WindowsIdentity.GetCurrent())
+            .IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
+
     public static void Open(string path) => Process.Start(new ProcessStartInfo(Explorer) { ArgumentList = { path } });
 
     // explorer.exe expects "/select,<path>" as a single argument with the path in quotes.

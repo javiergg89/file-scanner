@@ -32,8 +32,9 @@ public sealed partial class MainWindow
         TypesPanel.Visibility = types ? Visibility.Visible : Visibility.Collapsed;
         LargestPanel.Visibility = largest ? Visibility.Visible : Visibility.Collapsed;
         FolderListPanel.Visibility = list ? Visibility.Visible : Visibility.Collapsed;
-        CrumbsRow.Visibility = duplicates ? Visibility.Collapsed : Visibility.Visible;
+        CrumbsRow.Visibility = SearchBox.Visibility = duplicates ? Visibility.Collapsed : Visibility.Visible;
         MapHost.Visibility = LegendPanel.Visibility = duplicates || types || largest || list ? Visibility.Collapsed : Visibility.Visible;
+        FitRings();
         // RefreshDuplicateStates skips while the tab is hidden, so it runs here when the tab is shown.
         if (duplicates) RefreshDuplicateStates();
     }

@@ -16,6 +16,8 @@ namespace FileScanner;
 public sealed partial class MainWindow : Window
 {
     static readonly string Home = App.Demo ? DemoData.Home : Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    // Scanned at launch and when nothing is chosen: the system drive (C:\). Demo data lives under Home.
+    static readonly string DefaultRoot = App.Demo ? Home : Path.GetPathRoot(Environment.SystemDirectory)!;
 
     readonly TunedAcrylicBackdrop _backdrop = new();
     readonly System.Collections.ObjectModel.ObservableCollection<DeleteJob> _jobs = [];
@@ -36,7 +38,7 @@ public sealed partial class MainWindow : Window
     bool _rescanPending;
     CancellationTokenSource? _scanCancel;
     // Folders confirmed with "Escanear" (or picked with "Elegir carpeta…", drag and drop or launch), and those of the scan on screen.
-    List<string> _scope = [Home];
+    List<string> _scope = [DefaultRoot];
     List<string> _shownScope = [];
     // Last Recycle Bin size read; the empty dialog uses it without rereading.
     long _recycleBytes;
@@ -46,7 +48,7 @@ public sealed partial class MainWindow : Window
     // The window is closing: the first Closing already saved or chose not to.
     bool _closing;
 
-    // launchFolder: folder passed at launch (Explorer context menu); replaces the user profile folder.
+    // launchFolder: folder passed at launch (Explorer context menu); replaces the system drive.
     public MainWindow(Settings settings, string? launchFolder = null)
     {
         _settings = settings;
@@ -54,6 +56,9 @@ public sealed partial class MainWindow : Window
         SystemBackdrop = _backdrop;
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
+        InitAdmin();
+        // Taskbar and Alt+Tab icon. The .exe carries the same one (ApplicationIcon).
+        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets", "AppIcon.ico"));
         FitToScreen();
         ApplyTextScale();
         _uiSettings.TextScaleFactorChanged += (_, _) => DispatcherQueue.TryEnqueue(ApplyTextScale);
@@ -154,8 +159,8 @@ public sealed partial class MainWindow : Window
     {
         ScopeFlyout.Hide();
         _scope = [.. ScopeChoices().Where(c => c.Box.IsChecked == true).Select(c => c.Path)];
-        // With nothing ticked, scans the user profile folder, as at launch.
-        if (_scope.Count == 0) _scope = [Home];
+        // With nothing ticked, scans the system drive, as at launch.
+        if (_scope.Count == 0) _scope = [DefaultRoot];
         UpdateScopeText();
         await ScanAsync();
     }
@@ -220,11 +225,11 @@ public sealed partial class MainWindow : Window
     {
         var roots = ScanRoots();
         var targets = DiskScanner.Targets(roots);
-        // A chosen folder that no longer exists (deleted, drive or network disconnected) falls back to the user profile folder.
+        // A chosen folder that no longer exists (deleted, drive or network disconnected) falls back to the system drive.
         if (targets.Count == 0)
         {
             ShowStatus(InfoBarSeverity.Warning, string.Format(CultureInfo.CurrentCulture, Strings.Window.FolderNotFound, roots[0]));
-            _scope = roots = [Home];
+            _scope = roots = [DefaultRoot];
             UpdateScopeText();
             targets = DiskScanner.Targets(roots);
         }
@@ -671,7 +676,8 @@ public sealed partial class MainWindow : Window
     void WarnNotDeleted(List<string> left, int total)
     {
         string message = string.Format(CultureInfo.CurrentCulture, Strings.Window.NotDeleted, left.Count, total, left[0]);
-        // Program Files, ProgramData and Windows can only be modified as administrator; the app runs unelevated.
+        // Program Files, ProgramData and Windows can only be modified as administrator. Unelevated, the app offers to
+        // restart elevated; elevated, what is left is in use, and the PowerShell command is the way out.
         var systemDirs = Leftovers.SystemRoots().Append(Environment.GetFolderPath(Environment.SpecialFolder.Windows));
         if (!left.Exists(p => systemDirs.Any(dir => Paths.IsSameOrUnder(p, dir))))
         {
@@ -679,6 +685,11 @@ public sealed partial class MainWindow : Window
             return;
         }
         message += "\n" + Strings.Window.NeedsAdmin;
+        if (!Shell.IsElevated)
+        {
+            ShowStatus(InfoBarSeverity.Warning, message + " " + Strings.Window.RestartAsAdminHint, Strings.Settings.RestartAsAdmin, () => Restart(asAdmin: true));
+            return;
+        }
         // "Copiar script" has only the ticked items; items deleted from a context menu are not in it.
         if (left.TrueForAll(p => AllSelections().Any(r => r.CoverageOf(p) == Coverage.Full)))
             ShowStatus(InfoBarSeverity.Warning, message + " " + Strings.Window.UseCopyScript);
