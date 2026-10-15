@@ -16,6 +16,8 @@ namespace FileScanner;
 public sealed partial class MainWindow : Window
 {
     static readonly string Home = App.Demo ? DemoData.Home : Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    // Scanned at launch and when nothing is chosen: the system drive (C:\). Demo data lives under Home.
+    static readonly string DefaultRoot = App.Demo ? Home : Path.GetPathRoot(Environment.SystemDirectory)!;
 
     readonly TunedAcrylicBackdrop _backdrop = new();
     readonly System.Collections.ObjectModel.ObservableCollection<DeleteJob> _jobs = [];
@@ -36,7 +38,7 @@ public sealed partial class MainWindow : Window
     bool _rescanPending;
     CancellationTokenSource? _scanCancel;
     // Folders confirmed with "Escanear" (or picked with "Elegir carpeta…", drag and drop or launch), and those of the scan on screen.
-    List<string> _scope = [Home];
+    List<string> _scope = [DefaultRoot];
     List<string> _shownScope = [];
     // Last Recycle Bin size read; the empty dialog uses it without rereading.
     long _recycleBytes;
@@ -46,7 +48,7 @@ public sealed partial class MainWindow : Window
     // The window is closing: the first Closing already saved or chose not to.
     bool _closing;
 
-    // launchFolder: folder passed at launch (Explorer context menu); replaces the user profile folder.
+    // launchFolder: folder passed at launch (Explorer context menu); replaces the system drive.
     public MainWindow(Settings settings, string? launchFolder = null)
     {
         _settings = settings;
@@ -154,8 +156,8 @@ public sealed partial class MainWindow : Window
     {
         ScopeFlyout.Hide();
         _scope = [.. ScopeChoices().Where(c => c.Box.IsChecked == true).Select(c => c.Path)];
-        // With nothing ticked, scans the user profile folder, as at launch.
-        if (_scope.Count == 0) _scope = [Home];
+        // With nothing ticked, scans the system drive, as at launch.
+        if (_scope.Count == 0) _scope = [DefaultRoot];
         UpdateScopeText();
         await ScanAsync();
     }
@@ -220,11 +222,11 @@ public sealed partial class MainWindow : Window
     {
         var roots = ScanRoots();
         var targets = DiskScanner.Targets(roots);
-        // A chosen folder that no longer exists (deleted, drive or network disconnected) falls back to the user profile folder.
+        // A chosen folder that no longer exists (deleted, drive or network disconnected) falls back to the system drive.
         if (targets.Count == 0)
         {
             ShowStatus(InfoBarSeverity.Warning, string.Format(CultureInfo.CurrentCulture, Strings.Window.FolderNotFound, roots[0]));
-            _scope = roots = [Home];
+            _scope = roots = [DefaultRoot];
             UpdateScopeText();
             targets = DiskScanner.Targets(roots);
         }
