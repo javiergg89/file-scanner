@@ -169,6 +169,8 @@ public sealed partial class MainWindow
     {
         MapCanvas.Children.Clear();
         _drawnShapes.Clear();
+        // Removed shapes never raise PointerExited.
+        ClearHover();
         // The chart is hidden on the Duplicates tab; it draws when Rings or Map is selected again.
         if (DuplicatesView || ShownNode is not { } current) return;
         RefreshCleanable();
@@ -208,7 +210,11 @@ public sealed partial class MainWindow
 
     Color ColorOf(DirNode node) => IsClean(node) ? CleanColor : GroupOf(node).Color;
 
-    void UpdatePathSize(DirNode node) => PathSize.Text = $"{DirNode.Format(node.Size)} · {FileCount(node)}";
+    void UpdatePathSize(DirNode node)
+    {
+        PathSizeText.Text = DirNode.Format(node.Size);
+        PathFilesText.Text = FileCount(node);
+    }
 
     static string FileCount(DirNode node) => Plural(node.FileCount, Strings.Map.FileOne, Strings.Map.FileMany);
 
@@ -229,16 +235,37 @@ public sealed partial class MainWindow
         || Math.Abs(shown.Size - _renderedSize) > shown.Size / 200;
 
     // Click or Enter opens the folder. Right click, Shift+F10 or the Menu key opens the context menu.
-    // The tooltip shows path, size, file count and, if any, growth since the saved snapshot.
+    // Hovering shows path, size, file count and, if any, last change and growth above the chart (no tooltip: it repeated them).
     // The node goes in Tag and the handlers are shared: a lambda that captures its own element forms a
     // .NET-COM cycle that WinUI never frees, and with thousands of shapes per render memory grows without bound.
     void Wire(FrameworkElement element, DirNode node)
     {
         element.Tag = node;
-        string growth = GrowthNote(node);
-        ToolTipService.SetToolTip(element, $"{node.Path}\n{DirNode.Format(node.Size)} · {FileCount(node)}{AgeNote(node)}{(growth.Length > 0 ? "\n" + growth : "")}");
         element.Tapped += Element_Tapped;
         element.ContextRequested += Element_ContextRequested;
+        element.PointerEntered += Hover_PointerEntered;
+        element.PointerExited += Hover_PointerExited;
+    }
+
+    // While the pointer is over a shape, its path replaces the breadcrumb and the left box shows its size, at once.
+    void Hover_PointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        var node = (DirNode)((FrameworkElement)sender).Tag;
+        HoverPath.Text = node.Path;
+        HoverSize.Text = DirNode.Format(node.Size);
+        HoverFiles.Text = FileCount(node);
+        HoverNote.Text = string.Join("\n", new[] { AgeNote(node).TrimStart('\n'), GrowthNote(node) }.Where(n => n.Length > 0));
+        HoverNote.Visibility = HoverNote.Text.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        HoverPath.Visibility = HoverInfo.Visibility = Visibility.Visible;
+        Crumbs.Visibility = Visibility.Collapsed;
+    }
+
+    void Hover_PointerExited(object sender, PointerRoutedEventArgs e) => ClearHover();
+
+    void ClearHover()
+    {
+        HoverPath.Visibility = HoverInfo.Visibility = Visibility.Collapsed;
+        Crumbs.Visibility = Visibility.Visible;
     }
 
     // First chart level: a control that takes focus and that Narrator reads. Inner levels are not focusable:

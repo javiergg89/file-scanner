@@ -43,6 +43,14 @@
                 <Setter Property="FontFamily" Value="Cascadia Mono, Consolas" />
                 <Setter Property="FontSize" Value="12" />
             </Style>
+            <!-- Size and file count boxes under the path. -->
+            <Style x:Key="StatBox" TargetType="StackPanel">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="Padding" Value="10,6" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorSecondaryBrush}" />
+                <Setter Property="IsHitTestVisible" Value="False" />
+            </Style>
             <!-- For error texts created in code: theme colors cannot be looked up by key in Root.Resources. -->
             <Style x:Key="ErrorText" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{ThemeResource SystemFillColorCriticalBrush}" />
@@ -426,6 +434,11 @@
                             </SelectorBarItem.Icon>
                         </SelectorBarItem>
                     </SelectorBar>
+                    <AutoSuggestBox x:Name="SearchBox" Grid.Row="1" Width="220" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                    PlaceholderText="{x:Bind s:Main.SearchPlaceholder}" QueryIcon="Find" TextMemberPath="Name" UpdateTextOnSelect="False"
+                                    AutomationProperties.Name="{x:Bind s:Main.SearchName}" ItemTemplate="{StaticResource SearchTemplate}"
+                                    ToolTipService.ToolTip="{x:Bind s:Main.SearchTip}"
+                                    GotFocus="Search_GotFocus" TextChanged="Search_TextChanged" QuerySubmitted="Search_QuerySubmitted" />
                 </Grid>
 
                 <Grid x:Name="DuplicatesPanel" Grid.Row="1" Grid.RowSpan="3" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="8" Visibility="Collapsed">
@@ -475,7 +488,7 @@
                     </Grid>
                 </Grid>
 
-                <Grid x:Name="CrumbsRow" Grid.Row="1" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="4" SizeChanged="CrumbsRow_SizeChanged">
+                <Grid x:Name="CrumbsRow" Grid.Row="1" Canvas.ZIndex="1" ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="4" RowSpacing="8" SizeChanged="CrumbsRow_SizeChanged">
                     <Button x:Name="UpButton" Click="Up_Click" Style="{StaticResource IconButton}" AutomationProperties.Name="{x:Bind s:Main.UpName}" IsEnabled="False"
                             ToolTipService.ToolTip="{x:Bind s:Main.UpTip}">
                         <FontIcon Glyph="&#xE72B;" FontSize="14" />
@@ -488,13 +501,20 @@
                             </DataTemplate>
                         </BreadcrumbBar.ItemTemplate>
                     </BreadcrumbBar>
-                    <TextBlock x:Name="PathSize" Grid.Column="2" Style="{StaticResource Mono}" VerticalAlignment="Center"
-                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                    <AutoSuggestBox x:Name="SearchBox" Grid.Column="3" Width="220" Margin="8,0,0,0" VerticalAlignment="Center"
-                                    PlaceholderText="{x:Bind s:Main.SearchPlaceholder}" QueryIcon="Find" TextMemberPath="Name" UpdateTextOnSelect="False"
-                                    AutomationProperties.Name="{x:Bind s:Main.SearchName}" ItemTemplate="{StaticResource SearchTemplate}"
-                                    ToolTipService.ToolTip="{x:Bind s:Main.SearchTip}"
-                                    GotFocus="Search_GotFocus" TextChanged="Search_TextChanged" QuerySubmitted="Search_QuerySubmitted" />
+                    <!-- Hovered chart shape: its path replaces the breadcrumb at once, without waiting for the tooltip. -->
+                    <TextBlock x:Name="HoverPath" Grid.Column="1" Margin="8,0,16,0" VerticalAlignment="Center" Visibility="Collapsed"
+                               TextTrimming="CharacterEllipsis" IsHitTestVisible="False" />
+                    <!-- Same box on both sides, size above and file count below: hovered shape on the left, shown folder on the right. -->
+                    <StackPanel x:Name="HoverInfo" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource StatBox}" HorizontalAlignment="Left" Visibility="Collapsed">
+                        <TextBlock x:Name="HoverSize" Style="{StaticResource Mono}" />
+                        <TextBlock x:Name="HoverFiles" Style="{StaticResource Mono}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <!-- Last change (age colors) and growth since the saved snapshot, when there are any. -->
+                        <TextBlock x:Name="HoverNote" Style="{StaticResource Mono}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+                    <StackPanel x:Name="PathSize" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource StatBox}" HorizontalAlignment="Right">
+                        <TextBlock x:Name="PathSizeText" Style="{StaticResource Mono}" HorizontalAlignment="Right" />
+                        <TextBlock x:Name="PathFilesText" Style="{StaticResource Mono}" HorizontalAlignment="Right" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
                 </Grid>
                 <Grid x:Name="MapHost" Grid.Row="2" SizeChanged="MapHost_SizeChanged">
                     <Canvas x:Name="MapCanvas" />
