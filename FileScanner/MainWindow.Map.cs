@@ -450,7 +450,7 @@ public sealed partial class MainWindow
     void RenderRings(DirNode current, double width, double height)
     {
         double cx = width / 2, cy = height / 2;
-        double outer = Math.Min(width, height) / 2 - 6, hole = outer * 0.26;
+        double outer = Math.Min(width, height) / 2 - 6, hole = outer * 0.34;
         if (outer < 40) return;
         double ring = (outer - hole) / RingDepth;
         bool dark = Root.ActualTheme == ElementTheme.Dark;
@@ -500,7 +500,7 @@ public sealed partial class MainWindow
         var centerFill = _highContrast ? SystemColor(UIElementType.Window) : WithAlpha(GroupOf(current).Color, 0x50);
         center.Children.Add(new Ellipse { Fill = BrushOf(centerFill), Stroke = _gap });
         var label = new StackPanel { VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center, Spacing = 2 };
-        label.Children.Add(new TextBlock { Text = current.Name, FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, MaxWidth = hole * 1.6, TextTrimming = TextTrimming.CharacterEllipsis });
+        label.Children.Add(new TextBlock { Text = current.Name, FontSize = 12, HorizontalAlignment = HorizontalAlignment.Center, MaxWidth = hole * 1.7, TextTrimming = TextTrimming.CharacterEllipsis });
         // In a small chart the hole is narrower than the text: the Viewbox scales it down instead of letting it spill over the rings.
         label.Children.Add(new Viewbox
         {
