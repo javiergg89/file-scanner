@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Globalization;
 using FileScanner.Core;
 using Microsoft.UI.Xaml;
@@ -17,6 +18,9 @@ public sealed class GrowthItem(DirNode node, long grown, string displayPath)
 
     // Narrator reads the ListView row name from ToString().
     public override string ToString() => string.Format(CultureInfo.CurrentCulture, Strings.Views.GrowthRow, Name, GrowthText, SizeText);
+
+    // Same row on screen: the list keeps it instead of recreating it.
+    public bool SameAs(GrowthItem other) => Node == other.Node && GrowthText == other.GrowthText && SizeText == other.SizeText;
 }
 
 // Growth since the saved copy: computed when the copy loads (at startup or when the folders change) and reused
@@ -27,6 +31,7 @@ public sealed partial class MainWindow
     // Previous size of what grew, by path, and when the compared copy was saved.
     Dictionary<string, long>? _grownBefore;
     DateTime _grownSinceUtc;
+    readonly ObservableCollection<GrowthItem> _growthItems = [];
 
     void SetGrowth(Dictionary<string, long>? before, DateTime sinceUtc)
     {
@@ -44,7 +49,15 @@ public sealed partial class MainWindow
     {
         var top = _root is { } root && _grownBefore is { } before ? Growth.Top(root, before, GrowthCount) : [];
         GrowthGroup.Visibility = top.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-        GrowthList.ItemsSource = top.ConvertAll(t => new GrowthItem(t.Node, t.Grown, Display(t.Node.Path)));
+        GrowthList.ItemsSource ??= _growthItems;
+        // Rows are replaced only where they changed: a new list on every disk change made the whole group flicker.
+        var items = top.ConvertAll(t => new GrowthItem(t.Node, t.Grown, Display(t.Node.Path)));
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (i == _growthItems.Count) _growthItems.Add(items[i]);
+            else if (!_growthItems[i].SameAs(items[i])) _growthItems[i] = items[i];
+        }
+        while (_growthItems.Count > items.Count) _growthItems.RemoveAt(_growthItems.Count - 1);
         GrowthInfo.Text = string.Format(CultureInfo.CurrentCulture, Strings.Views.GrowthInfo, DirNode.Format(Growth.Threshold), Ago(_grownSinceUtc));
     }
 
