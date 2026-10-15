@@ -56,6 +56,8 @@ public sealed partial class MainWindow : Window
         SystemBackdrop = _backdrop;
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
+        // Taskbar and Alt+Tab icon. The .exe carries the same one (ApplicationIcon).
+        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets", "AppIcon.ico"));
         FitToScreen();
         ApplyTextScale();
         _uiSettings.TextScaleFactorChanged += (_, _) => DispatcherQueue.TryEnqueue(ApplyTextScale);

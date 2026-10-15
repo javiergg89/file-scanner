@@ -236,7 +236,7 @@
 
         <TitleBar x:Name="AppTitleBar" Grid.ColumnSpan="2" Title="File Scanner">
             <TitleBar.IconSource>
-                <FontIconSource Glyph="&#xEDA2;" />
+                <ImageIconSource ImageSource="ms-appx:///Assets/AppIcon.png" />
             </TitleBar.IconSource>
             <TitleBar.RightHeader>
                 <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,8,0">
