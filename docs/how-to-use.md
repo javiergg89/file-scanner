@@ -1,3 +1,5 @@
+English · [Español](how-to-use-es_ES.md)
+
 # How to use File Scanner
 
 ## Choose what to scan

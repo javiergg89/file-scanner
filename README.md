@@ -1,3 +1,5 @@
+English · [Español](README-es_ES.md)
+
 # File Scanner
 
 A Windows app that shows what takes up space in your home folder and deletes the caches, temporary files, crash dumps and old `node_modules` folders you check.
