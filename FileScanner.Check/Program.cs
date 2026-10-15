@@ -21,6 +21,7 @@ switch (args)
         await Checks.ScannerAsync();
         await Checks.ScannerLinksAsync();
         Checks.Recommendations();
+        Checks.Demo();
         Checks.PartialSelection();
         Checks.KeepSelection();
         Checks.Script();

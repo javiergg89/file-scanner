@@ -481,7 +481,7 @@ public static partial class DiskScanner
     }
 
     // Sorts largest first, takes the list without a copy, and recomputes the node's totals.
-    static void SetChildren(DirNode node, List<DirNode> children)
+    internal static void SetChildren(DirNode node, List<DirNode> children)
     {
         children.Sort((a, b) => b.Size.CompareTo(a.Size));
         node.SetChildList(children);

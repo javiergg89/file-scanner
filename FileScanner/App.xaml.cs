@@ -7,6 +7,9 @@ namespace FileScanner;
 public partial class App : Application
 {
     readonly Settings _settings = Settings.Load(Settings.DefaultFile);
+    // "--demo": shows DemoData instead of scanning, for screenshots. Read from the command line so it is set
+    // before any static field that depends on it.
+    public static readonly bool Demo = Environment.GetCommandLineArgs().Contains("--demo");
     Window? _window;
 
     public App()
@@ -24,6 +27,12 @@ public partial class App : Application
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        // The demo tree must point nowhere: if its home exists here, file reads in the tabs would list real files.
+        if (Demo && Directory.Exists(DemoData.Home))
+        {
+            Exit();
+            return;
+        }
         // The Explorer context menu (added by the installer) launches the app with the folder as an argument.
         _window = new MainWindow(_settings, ScanScope.LaunchFolder(Environment.GetCommandLineArgs().Skip(1)));
         _window.Activate();

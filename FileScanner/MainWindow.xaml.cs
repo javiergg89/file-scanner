@@ -15,7 +15,7 @@ namespace FileScanner;
 
 public sealed partial class MainWindow : Window
 {
-    static readonly string Home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    static readonly string Home = App.Demo ? DemoData.Home : Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
     readonly TunedAcrylicBackdrop _backdrop = new();
     readonly System.Collections.ObjectModel.ObservableCollection<DeleteJob> _jobs = [];
@@ -182,6 +182,12 @@ public sealed partial class MainWindow : Window
             _rescanPending = true;
             return;
         }
+        if (App.Demo)
+        {
+            if (_root is null) await ShowDemoAsync();
+            else DemoBlocked();
+            return;
+        }
         _scanning = true;
         RescanButton.IsEnabled = ScopeButton.IsEnabled = false;
         using var cancel = _scanCancel = new CancellationTokenSource();
@@ -283,6 +289,36 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    // Demo mode: the invented tree, with no scan, watcher, scan cache or installed programs.
+    async Task ShowDemoAsync()
+    {
+        var root = DemoData.Build(DateTime.UtcNow);
+        _shownScope = [.. _scope];
+        BusyPanel.Visibility = CancelScanButton.Visibility = Visibility.Collapsed;
+        // Enabled as after a real scan; ScanAsync turns their actions into the demo notice.
+        RescanButton.IsEnabled = ScopeButton.IsEnabled = true;
+        Show(root, [], Leftovers.Parents(Home, []));
+        ScanInfo.Text = Plural(root.FileCount, Strings.Window.FileOne, Strings.Window.FileMany);
+        await UpdateRecycleBinAsync();
+    }
+
+    // Demo mode shows invented paths: actions that would touch the disk, the shell or the clipboard only say so.
+    bool DemoBlocked()
+    {
+        if (App.Demo) ShowStatus(InfoBarSeverity.Informational, Strings.Window.DemoDisabled);
+        return App.Demo;
+    }
+
+    void OpenInExplorer(string path)
+    {
+        if (!DemoBlocked()) Shell.Open(path);
+    }
+
+    void RevealInExplorer(string path)
+    {
+        if (!DemoBlocked()) Shell.Reveal(path);
+    }
+
     // Cancel leaves what was on screen: the saved copy of the new scope, or the previous scan with its scope.
     void ScanCancelled()
     {
@@ -359,8 +395,10 @@ public sealed partial class MainWindow : Window
         // The Recommendations footer counts only its own items; the top total also adds the Duplicates copies.
         var selected = AllRecommendations().Where(r => r.TargetCount > 0).ToList();
         long selectedSize = Outermost(selected.SelectMany(r => r.Targets)).Sum(t => t.Size);
-        var drive = new DriveInfo(Path.GetPathRoot(Home)!);
-        string homeRoot = drive.RootDirectory.FullName;
+        // Demo mode does not show the real drive.
+        var drive = App.Demo ? null : new DriveInfo(Path.GetPathRoot(Home)!);
+        string homeRoot = drive?.RootDirectory.FullName ?? Path.GetPathRoot(Home)!;
+        long driveSize = drive?.TotalSize ?? DemoData.DriveSize, driveFree = drive?.AvailableFreeSpace ?? DemoData.DriveFree;
         // "Libre tras la limpieza" is for the user profile drive; items ticked on other drives are listed separately.
         var byDrive = Outermost(AllSelections().SelectMany(r => r.Targets))
             .GroupBy(t => Path.GetPathRoot(t.Path) ?? "", StringComparer.OrdinalIgnoreCase)
@@ -369,7 +407,7 @@ public sealed partial class MainWindow : Window
         var elsewhere = byDrive.Where(d => !d.Key.Equals(homeRoot, StringComparison.OrdinalIgnoreCase)).ToList();
         long safeSize = _safe.Sum(r => r.Size), reviewSize = _review.Concat(_leftovers).Sum(r => r.Size);
 
-        FreeText.Text = DirNode.Format(drive.AvailableFreeSpace + here);
+        FreeText.Text = DirNode.Format(driveFree + here);
         FreeDelta.Text = elsewhere.Count == 0
             ? "+" + DirNode.Format(here)
             : string.Join(" · ", elsewhere.Select(d => string.Format(CultureInfo.CurrentCulture, Strings.Window.FreeOnDrive, DirNode.Format(d.Value), d.Key.TrimEnd('\\'))).Prepend(string.Format(CultureInfo.CurrentCulture, Strings.Window.FreeHere, DirNode.Format(here))));
@@ -384,7 +422,7 @@ public sealed partial class MainWindow : Window
         LeftoverGroup.Visibility = _leftovers.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         // Scanned size on the user profile drive: the root itself if it is that folder or drive, or its branch under "Este equipo".
         long scannedHere = _root.Find(homeRoot)?.Size ?? (Paths.IsSameOrUnder(_root.Path, homeRoot) ? _root.Size : 0);
-        OutsideText.Text = DirNode.Format(Math.Max(0, drive.TotalSize - drive.AvailableFreeSpace - scannedHere));
+        OutsideText.Text = DirNode.Format(Math.Max(0, driveSize - driveFree - scannedHere));
         SelectionText.Text = selected.Count == 0
             ? Strings.Window.NothingSelected
             : string.Format(CultureInfo.CurrentCulture, Strings.Window.SelectedSummary, DirNode.Format(selectedSize), Plural(selected.Count, Strings.Window.GroupOne, Strings.Window.GroupMany));
@@ -396,7 +434,7 @@ public sealed partial class MainWindow : Window
     // SHQueryRecycleBin walks the Recycle Bin of every drive and can take seconds, so it runs off the UI thread.
     async Task UpdateRecycleBinAsync()
     {
-        long bytes = _recycleBytes = await Task.Run(Shell.RecycleBinBytes, CancellationToken.None);
+        long bytes = _recycleBytes = App.Demo ? 0 : await Task.Run(Shell.RecycleBinBytes, CancellationToken.None);
         RecycleText.Text = bytes > 0 ? string.Format(CultureInfo.CurrentCulture, Strings.Window.RecycleBinSize, DirNode.Format(bytes)) : Strings.Window.RecycleBinEmpty;
         RecycleButton.IsEnabled = bytes > 0;
     }
@@ -447,6 +485,7 @@ public sealed partial class MainWindow : Window
     // (an exception in a XAML event handler ends the process).
     void OpenFile(string path)
     {
+        if (DemoBlocked()) return;
         try
         {
             Shell.Launch(path);
@@ -461,6 +500,7 @@ public sealed partial class MainWindow : Window
     // Returns false then, so the caller does not announce the copy.
     bool CopyText(string text)
     {
+        if (DemoBlocked()) return false;
         var package = new DataPackage();
         package.SetText(text);
         try
@@ -540,7 +580,7 @@ public sealed partial class MainWindow : Window
     // (a full Temp or cache has hundreds of thousands of entries). An item ticked in two selections counts once in the size.
     async Task DeleteTargetsAsync(IReadOnlyList<Target> targets, string what)
     {
-        if (targets.Count == 0 || _confirmingDelete) return;
+        if (targets.Count == 0 || _confirmingDelete || DemoBlocked()) return;
         long bytes = Outermost(targets).Sum(t => t.Size);
         _confirmingDelete = true;
         List<string> paths;
@@ -562,7 +602,7 @@ public sealed partial class MainWindow : Window
     async Task DeleteAsync(IReadOnlyList<string> paths, string what, long bytes)
     {
         // No second confirmation while one is prepared or shown: WinUI crashes the app with two ContentDialogs open at once.
-        if (paths.Count == 0 || _confirmingDelete) return;
+        if (paths.Count == 0 || _confirmingDelete || DemoBlocked()) return;
         // Every delete goes through here (Recommendations, Duplicates and menus), so this one check covers all of them.
         if (paths.FirstOrDefault(Paths.IsProtected) is { } vital)
         {
@@ -758,6 +798,7 @@ public sealed partial class MainWindow : Window
     // and WinUI crashes the app with two ContentDialogs open at once.
     async void EmptyRecycle_Click(object sender, RoutedEventArgs e)
     {
+        if (DemoBlocked()) return;
         RecycleButton.IsEnabled = false;
         var dialog = new ContentDialog
         {

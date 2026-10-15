@@ -42,7 +42,7 @@ public sealed partial class MainWindow
         if (first is not null)
         {
             menu.Items.Add(Item(Strings.Map.ShowInChartItem, "", () => ShowInChart(first)));
-            menu.Items.Add(Item(Strings.Map.OpenInExplorerItem, "", () => Shell.Open(first.Path)));
+            menu.Items.Add(Item(Strings.Map.OpenInExplorerItem, "", () => OpenInExplorer(first.Path)));
         }
         menu.Items.Add(Item(Strings.Map.CopyPathsItem, "", () => CopyText(string.Join(Environment.NewLine, rec.Nodes.Select(n => n.Path).Concat(rec.Targets.Select(t => t.Path)).Distinct()))));
         menu.Items.Add(new MenuFlyoutSeparator());
@@ -63,12 +63,12 @@ public sealed partial class MainWindow
         {
             menu.Items.Add(ItemAsync(Strings.Map.EnterItem, "", () => EnterEntryAsync(entry)));
             menu.Items.Add(Item(Strings.Map.ShowInChartItem, "", () => ShowInChart(node)));
-            menu.Items.Add(Item(Strings.Map.OpenInExplorerItem, "", () => Shell.Open(entry.Path)));
+            menu.Items.Add(Item(Strings.Map.OpenInExplorerItem, "", () => OpenInExplorer(entry.Path)));
         }
         else
         {
             menu.Items.Add(Item(Strings.Map.OpenItem, "", () => OpenFile(entry.Path)));
-            menu.Items.Add(Item(Strings.Map.ShowInExplorerItem, "", () => Shell.Reveal(entry.Path)));
+            menu.Items.Add(Item(Strings.Map.ShowInExplorerItem, "", () => RevealInExplorer(entry.Path)));
         }
         menu.Items.Add(Item(Strings.Map.CopyPathItem, "", () => CopyText(entry.Path)));
         menu.Items.Add(new MenuFlyoutSeparator());
@@ -85,7 +85,7 @@ public sealed partial class MainWindow
         string path = item.File.Path;
         var menu = new MenuFlyout();
         menu.Items.Add(Item(Strings.Map.OpenItem, "", () => OpenFile(path)));
-        menu.Items.Add(Item(Strings.Map.ShowInExplorerItem, "", () => Shell.Reveal(path)));
+        menu.Items.Add(Item(Strings.Map.ShowInExplorerItem, "", () => RevealInExplorer(path)));
         menu.Items.Add(Item(Strings.Map.CopyPathItem, "", () => CopyText(path)));
         if (_root?.FindNearest(path) is { } folder)
             menu.Items.Add(Item(Strings.Map.ShowFolderInChartItem, "", () => ShowInChart(folder)));

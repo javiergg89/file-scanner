@@ -301,7 +301,7 @@ public sealed partial class MainWindow
         var folder = node.IsFiles ? node.Parent! : node;
         var menu = new MenuFlyout();
         if (!node.IsFiles && node.ChildrenOrEmpty.Count > 0) menu.Items.Add(Item(Strings.Map.EnterItem, "", () => Navigate(node)));
-        menu.Items.Add(Item(Strings.Map.OpenInExplorerItem, "", () => Shell.Open(folder.Path)));
+        menu.Items.Add(Item(Strings.Map.OpenInExplorerItem, "", () => OpenInExplorer(folder.Path)));
         menu.Items.Add(Item(Strings.Map.CopyPathItem, "", () => CopyText(folder.Path)));
         menu.Items.Add(ItemAsync(Strings.Map.ExportCsvItem, "", () => ExportCsvAsync(folder)));
         // Partial folder (C:\Users with only the user folder scanned): deleting or rescanning it would touch unscanned content.
@@ -509,7 +509,7 @@ public sealed partial class MainWindow
     // Full rescan of one folder from the context menu. It can take a while; ScanRing shows progress.
     async Task RescanFolderAsync(DirNode folder)
     {
-        if (_scanning || _rescanningFolder || _root is null) return;
+        if (_scanning || _rescanningFolder || _root is null || DemoBlocked()) return;
         _rescanningFolder = true;
         ScanRing.IsActive = true;
         ScanInfo.Text = string.Format(CultureInfo.CurrentCulture, Strings.Map.Rescanning, folder.Name);

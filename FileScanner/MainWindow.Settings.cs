@@ -46,6 +46,8 @@ public sealed partial class MainWindow
 
     void SaveSettings()
     {
+        // Demo mode applies the change but writes nothing.
+        if (App.Demo) return;
         try
         {
             _settings.Save(Settings.DefaultFile);

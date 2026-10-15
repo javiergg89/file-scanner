@@ -225,6 +225,21 @@ static class Checks
         Check(!windowsOld.KeepFolders && !windowsOld.Targets.Single().ContentsOnly, "Windows.old se marca para borrarla entera");
     }
 
+    // Demo tree (--demo): believable totals, and the rules find its folders although its home is not this PC's profile.
+    public static void Demo()
+    {
+        var root = DemoData.Build(Now);
+        Check(root.Path == DemoData.Home && root.Size is > 400L << 30 and < 440L << 30 && root.FileCount is > 1_100_000 and < 1_300_000,
+            $"árbol de demostración de {DirNode.Format(root.Size)} y {root.FileCount:N0} archivos");
+        var recs = Cleanup.Recommend(root, DemoData.Home, Now, [], Leftovers.Parents(DemoData.Home, []));
+        string[] expected = [Strings.Rules.TempFiles, Strings.Rules.NpmCache, Strings.Rules.NuGetHttpCache, Strings.Rules.GradleCaches,
+            Strings.Rules.BrowserCaches, Strings.Rules.NuGetPackages, Strings.Rules.Downloads, Strings.Rules.IdleBuilds];
+        Check(expected.All(t => recs.Exists(r => r.Title == t)) && recs.Exists(r => r.Title.StartsWith(NodeModules)),
+            "las reglas se aplican al home de la demostración");
+        Check(recs.Where(r => r.Risk == Risk.Leftover).Select(r => r.Title).Order().SequenceEqual(["OldGameLauncher", "PhotoSuite 7", "retro-editor"]),
+            "restos de programas de la demostración");
+    }
+
     // Test cache: a (10), b (b1 of 4 and b2 of 2) and the file f.txt (3).
     sealed record CacheTree(DirNode Root, DirNode A, DirNode B, DirNode B1, Dictionary<string, IReadOnlyList<Entry>> Listing)
     {

@@ -96,6 +96,9 @@
   <data name="RecycleBinSize" xml:space="preserve">
     <value>Papelera · {0}</value>
   </data>
+  <data name="DemoDisabled" xml:space="preserve">
+    <value>Modo de demostración: esta acción está desactivada.</value>
+  </data>
   <data name="RecycleBinEmpty" xml:space="preserve">
     <value>Papelera vacía</value>
   </data>

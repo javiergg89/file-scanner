@@ -11,6 +11,7 @@ public sealed partial class MainWindow
 {
     async Task ExportCsvAsync(DirNode folder)
     {
+        if (DemoBlocked()) return;
         var picker = new FileSavePicker(AppWindow.Id)
         {
             SuggestedFileName = string.Format(CultureInfo.CurrentCulture, Strings.Views.ExportFileName, SafeFileName(folder.Name)),

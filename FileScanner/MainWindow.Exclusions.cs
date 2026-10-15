@@ -36,7 +36,8 @@ public sealed partial class MainWindow
     {
         try
         {
-            _exclusions.Save(DuplicateExclusions.DefaultFile);
+            // Demo mode applies the change but writes nothing.
+            if (!App.Demo) _exclusions.Save(DuplicateExclusions.DefaultFile);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {

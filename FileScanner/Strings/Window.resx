@@ -110,6 +110,9 @@
     <value>Recycle Bin · {0}</value>
     <comment>{0}: size.</comment>
   </data>
+  <data name="DemoDisabled" xml:space="preserve">
+    <value>Demo mode: this action is turned off.</value>
+  </data>
   <data name="RecycleBinEmpty" xml:space="preserve">
     <value>The Recycle Bin is empty</value>
   </data>

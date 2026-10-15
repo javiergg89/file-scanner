@@ -307,7 +307,7 @@ public static class Cleanup
         foreach (var rule in Rules)
         {
             var nodes = rule.Paths
-                .SelectMany(p => Resolve(root, Environment.ExpandEnvironmentVariables(p)))
+                .SelectMany(p => Resolve(root, Expand(p, home)))
                 .Where(n => n.Size > 0)
                 .ToList();
             if (nodes.Count == 0) continue;
@@ -347,6 +347,16 @@ public static class Cleanup
                 string.Format(CultureInfo.CurrentCulture, Strings.Rules.LeftoverPath, Tilde(home, folder.Path), folder.NewestWriteUtc.ToLocalTime()), [folder]) { KeepFolders = false });
 
         return [.. list.OrderBy(r => r.Risk).ThenByDescending(r => r.Size)];
+    }
+
+    static readonly string Profile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+    // Expands the variables; paths in the real profile move to home when home is another one (demo mode).
+    // With the real profile as home the result is unchanged.
+    static string Expand(string pattern, string home)
+    {
+        string path = Environment.ExpandEnvironmentVariables(pattern);
+        return Paths.IsUnder(path, Profile) && !Paths.Same(home, Profile) ? home.TrimEnd('\\') + path[Profile.TrimEnd('\\').Length..] : path;
     }
 
     static string IdleFolders(int n) => n == 1 ? Strings.Rules.IdleFoldersOne : string.Format(CultureInfo.CurrentCulture, Strings.Rules.IdleFoldersMany, n);

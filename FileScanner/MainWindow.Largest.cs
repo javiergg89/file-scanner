@@ -129,7 +129,7 @@ public sealed partial class MainWindow
     {
         var menu = new MenuFlyout();
         menu.Items.Add(Item(Strings.Views.OpenItem, "", () => OpenFile(file.Path)));
-        menu.Items.Add(Item(Strings.Views.ShowInExplorerItem, "", () => Shell.Reveal(file.Path)));
+        menu.Items.Add(Item(Strings.Views.ShowInExplorerItem, "", () => RevealInExplorer(file.Path)));
         menu.Items.Add(Item(Strings.Views.CopyPathItem, "", () => CopyText(file.Path)));
         if (_root?.FindNearest(file.Path) is { } folder)
             menu.Items.Add(Item(Strings.Views.ShowFolderInChartItem, "", () => ShowInChart(folder)));
