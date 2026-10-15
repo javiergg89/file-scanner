@@ -498,6 +498,11 @@
                 <Grid x:Name="CrumbsRow" Grid.Row="1" Canvas.ZIndex="1" ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="4" RowSpacing="8" SizeChanged="CrumbsRow_SizeChanged">
                     <Button x:Name="UpButton" Click="Up_Click" Style="{StaticResource IconButton}" AutomationProperties.Name="{x:Bind s:Main.UpName}" IsEnabled="False"
                             ToolTipService.ToolTip="{x:Bind s:Main.UpTip}">
+                        <!-- Disabled at the root: WinUI's disabled state paints a gray box over the transparent background. -->
+                        <Button.Resources>
+                            <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Transparent" />
+                            <SolidColorBrush x:Key="ButtonBorderBrushDisabled" Color="Transparent" />
+                        </Button.Resources>
                         <FontIcon Glyph="&#xE72B;" FontSize="14" />
                     </Button>
                     <!-- Star column + right margin: the path shrinks first and never touches PathSize; long names trim. -->
