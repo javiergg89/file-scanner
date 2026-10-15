@@ -325,6 +325,13 @@
                                     <RadioMenuFlyoutItem x:Name="LanguageEnglish" GroupName="Language" Text="{x:Bind s:Settings.LanguageEnglish}" Click="Language_Click" />
                                     <RadioMenuFlyoutItem x:Name="LanguageSpanish" GroupName="Language" Text="{x:Bind s:Settings.LanguageSpanish}" Click="Language_Click" />
                                 </MenuFlyoutSubItem>
+                                <!-- Hidden when already elevated (InitAdmin). -->
+                                <MenuFlyoutSeparator x:Name="RestartAdminSeparator" />
+                                <MenuFlyoutItem x:Name="RestartAdminItem" Text="{x:Bind s:Settings.RestartAsAdmin}" Click="RestartAsAdmin_Click">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon Glyph="&#xEA18;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>

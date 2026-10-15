@@ -60,13 +60,37 @@ public sealed partial class MainWindow
 
     // Same arguments as this launch. The new instance starts before this one saves the scan copy: if it loads
     // the previous copy, its rescan at startup brings it up to date.
-    async void Restart()
+    // The user said no in the UAC prompt.
+    const int ErrorCancelled = 1223;
+
+    void Restart() => Restart(asAdmin: false);
+
+    // Elevated: the title says so and the menu entry goes. Dragging folders from Explorer does not reach an elevated window.
+    void InitAdmin()
+    {
+        if (!Shell.IsElevated) return;
+        Title = AppTitleBar.Title = Strings.Settings.AdminTitle;
+        RestartAdminItem.Visibility = RestartAdminSeparator.Visibility = Visibility.Collapsed;
+    }
+
+    void RestartAsAdmin_Click(object sender, RoutedEventArgs e) => Restart(asAdmin: true);
+
+    // asAdmin: Windows asks for consent (UAC). The new instance scans the same folder if only one was chosen;
+    // the saved copy of the scan shows at once.
+    async void Restart(bool asAdmin)
     {
         try
         {
             var start = new ProcessStartInfo(Environment.ProcessPath!);
-            foreach (var arg in Environment.GetCommandLineArgs().Skip(1)) start.ArgumentList.Add(arg);
+            string[] args = asAdmin && _scope is [var only] && only != DefaultRoot ? [only] : [.. Environment.GetCommandLineArgs().Skip(1)];
+            foreach (var arg in args) start.ArgumentList.Add(arg);
+            if (asAdmin) (start.UseShellExecute, start.Verb) = (true, "runas");
             Process.Start(start);
+        }
+        catch (System.ComponentModel.Win32Exception ex) when (asAdmin && ex.NativeErrorCode == ErrorCancelled)
+        {
+            ShowStatus(InfoBarSeverity.Informational, Strings.Settings.AdminCancelled);
+            return;
         }
         catch (System.ComponentModel.Win32Exception ex)
         {

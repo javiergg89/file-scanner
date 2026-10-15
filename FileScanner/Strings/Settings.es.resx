@@ -48,4 +48,13 @@
   <data name="SaveFailed" xml:space="preserve">
     <value>No se pudo guardar la configuración: {0}</value>
   </data>
+  <data name="RestartAsAdmin" xml:space="preserve">
+    <value>Reiniciar como administrador</value>
+  </data>
+  <data name="AdminCancelled" xml:space="preserve">
+    <value>Sigue sin permisos de administrador: Windows no los concedió.</value>
+  </data>
+  <data name="AdminTitle" xml:space="preserve">
+    <value>File Scanner (administrador)</value>
+  </data>
 </root>

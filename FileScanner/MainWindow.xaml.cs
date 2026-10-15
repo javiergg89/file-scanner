@@ -56,6 +56,7 @@ public sealed partial class MainWindow : Window
         SystemBackdrop = _backdrop;
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
+        InitAdmin();
         // Taskbar and Alt+Tab icon. The .exe carries the same one (ApplicationIcon).
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets", "AppIcon.ico"));
         FitToScreen();
@@ -675,7 +676,8 @@ public sealed partial class MainWindow : Window
     void WarnNotDeleted(List<string> left, int total)
     {
         string message = string.Format(CultureInfo.CurrentCulture, Strings.Window.NotDeleted, left.Count, total, left[0]);
-        // Program Files, ProgramData and Windows can only be modified as administrator; the app runs unelevated.
+        // Program Files, ProgramData and Windows can only be modified as administrator. Unelevated, the app offers to
+        // restart elevated; elevated, what is left is in use, and the PowerShell command is the way out.
         var systemDirs = Leftovers.SystemRoots().Append(Environment.GetFolderPath(Environment.SpecialFolder.Windows));
         if (!left.Exists(p => systemDirs.Any(dir => Paths.IsSameOrUnder(p, dir))))
         {
@@ -683,6 +685,11 @@ public sealed partial class MainWindow : Window
             return;
         }
         message += "\n" + Strings.Window.NeedsAdmin;
+        if (!Shell.IsElevated)
+        {
+            ShowStatus(InfoBarSeverity.Warning, message + " " + Strings.Window.RestartAsAdminHint, Strings.Settings.RestartAsAdmin, () => Restart(asAdmin: true));
+            return;
+        }
         // "Copiar script" has only the ticked items; items deleted from a context menu are not in it.
         if (left.TrueForAll(p => AllSelections().Any(r => r.CoverageOf(p) == Coverage.Full)))
             ShowStatus(InfoBarSeverity.Warning, message + " " + Strings.Window.UseCopyScript);

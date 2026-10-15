@@ -54,4 +54,16 @@
     <value>Couldn't save the settings: {0}</value>
     <comment>{0}: system error message.</comment>
   </data>
+  <data name="RestartAsAdmin" xml:space="preserve">
+    <value>Restart as administrator</value>
+    <comment>Settings menu item and status bar button.</comment>
+  </data>
+  <data name="AdminCancelled" xml:space="preserve">
+    <value>Still without administrator rights: Windows did not grant them.</value>
+    <comment>The user said no in the UAC prompt.</comment>
+  </data>
+  <data name="AdminTitle" xml:space="preserve">
+    <value>File Scanner (administrator)</value>
+    <comment>Window title when running elevated.</comment>
+  </data>
 </root>

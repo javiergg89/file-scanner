@@ -195,4 +195,7 @@
   <data name="EmptyRecycleFailed" xml:space="preserve">
     <value>No se pudo vaciar la papelera (error 0x{0:X8}). Vuelve a intentarlo o vacíala desde el Explorador de archivos.</value>
   </data>
+  <data name="RestartAsAdminHint" xml:space="preserve">
+    <value>Reinicia como administrador y vuelve a eliminarlo.</value>
+  </data>
 </root>
