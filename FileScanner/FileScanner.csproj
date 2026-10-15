@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- No MSIX, runtimes bundled (.NET and Windows App SDK): the publish folder runs on
+       any Windows 10/11 x64 with nothing else installed. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.22621.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <RootNamespace>FileScanner</RootNamespace>
+    <AssemblyName>FileScanner</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <!-- Puts FileScanner.pri (the compiled XAML) in the publish folder, even without MSIX. -->
+    <EnableMsixTooling>true</EnableMsixTooling>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Only the components the app uses, at the versions in the Microsoft.WindowsAppSDK 2.5.1 metapackage.
+         The metapackage adds the AI, ML, Widgets and Search runtimes (about 50 MB), which the app does not use.
+         WinUI: XAML and backdrops; Foundation: folder picker; InteractiveExperiences: AppWindow and Composition.
+         GeneratePathProperty defines $(PkgMicrosoft_WindowsAppSDK_WinUI), the package folder that holds its license. -->
+    <PackageReference Include="Microsoft.WindowsAppSDK.WinUI" Version="2.3.9" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.Foundation" Version="2.3.12" />
+    <PackageReference Include="Microsoft.WindowsAppSDK.InteractiveExperiences" Version="2.1.9" />
+  </ItemGroup>
+
+  <!-- Localized texts: Strings\<Area>.resx (English) and <Area>.es.resx (Spanish). -->
+  <Import Project="Strings\Strings.targets" />
+
+  <!-- Licenses next to the .exe: the app's own (MIT) and Microsoft's for the Windows App SDK runtime,
+       which ships in the publish folder. -->
+  <ItemGroup>
+    <Content Include="..\LICENSE" Link="licenses\LICENSE.txt" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\THIRD-PARTY-NOTICES.md" Link="licenses\THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(PkgMicrosoft_WindowsAppSDK_WinUI)\license.txt" Link="licenses\WindowsAppSDK-license.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- The .NET runtime ships inside (SelfContained) and its MIT license requires copying the notice with it.
+       The runtime pack folder is known only after FrameworkReference items are resolved. -->
+  <Target Name="AddDotNetRuntimeNotices" AfterTargets="ResolveFrameworkReferences" Condition="'$(SelfContained)' == 'true'">
+    <PropertyGroup>
+      <_DotNetRuntimePackDir>@(ResolvedRuntimePack->WithMetadataValue('FrameworkName', 'Microsoft.NETCore.App')->'%(PackageDirectory)')</_DotNetRuntimePackDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <Content Include="$(_DotNetRuntimePackDir)\LICENSE.TXT" Link="licenses\dotnet-LICENSE.txt" CopyToOutputDirectory="PreserveNewest" />
+      <Content Include="$(_DotNetRuntimePackDir)\THIRD-PARTY-NOTICES.TXT" Link="licenses\dotnet-THIRD-PARTY-NOTICES.txt" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
+
+</Project>

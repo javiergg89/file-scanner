@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SelectionTitle" xml:space="preserve">
+    <value>Copias duplicadas</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="FindButton" xml:space="preserve">
+    <value>Buscar duplicados</value>
+  </data>
+  <data name="FindingFiles" xml:space="preserve">
+    <value>Buscando archivos…</value>
+  </data>
+  <data name="NoneFound" xml:space="preserve">
+    <value>No hay duplicados de {0} MB o más.</value>
+  </data>
+  <data name="SearchCanceled" xml:space="preserve">
+    <value>Búsqueda cancelada.</value>
+  </data>
+  <data name="ProgressFiles" xml:space="preserve">
+    <value>{0}… {1:N0} archivos</value>
+  </data>
+  <data name="ProgressBytes" xml:space="preserve">
+    <value>{0}… {1} de {2}</value>
+  </data>
+  <data name="ProgressCount" xml:space="preserve">
+    <value>{0}… {1:N0} de {2:N0} archivos</value>
+  </data>
+  <data name="NothingToShow" xml:space="preserve">
+    <value>No hay duplicados que mostrar.</value>
+  </data>
+  <data name="GroupOne" xml:space="preserve">
+    <value>grupo</value>
+  </data>
+  <data name="GroupMany" xml:space="preserve">
+    <value>grupos</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>{0} · {1} recuperables</value>
+  </data>
+  <data name="SkippedOne" xml:space="preserve">
+    <value>1 archivo no se pudo leer (en uso o sin permiso)</value>
+  </data>
+  <data name="SkippedMany" xml:space="preserve">
+    <value>{0:N0} archivos no se pudieron leer (en uso o sin permiso)</value>
+  </data>
+  <data name="SearchAgain" xml:space="preserve">
+    <value>Vuelve a buscar para ver los archivos que estaban excluidos.</value>
+  </data>
+  <data name="NoCopiesSelected" xml:space="preserve">
+    <value>Ninguna copia marcada</value>
+  </data>
+  <data name="SelectedSummary" xml:space="preserve">
+    <value>{0} marcados · {1}</value>
+  </data>
+  <data name="CopyOne" xml:space="preserve">
+    <value>copia</value>
+  </data>
+  <data name="CopyMany" xml:space="preserve">
+    <value>copias</value>
+  </data>
+  <data name="AlreadyDeletedBy" xml:space="preserve">
+    <value>Esta copia ya se elimina con «{0}». Desmárcala allí para conservarla.</value>
+  </data>
+  <data name="KeepOneCopy" xml:space="preserve">
+    <value>Deja al menos una copia sin marcar: si se eliminan todas, se pierde el archivo.</value>
+  </data>
+  <data name="OthersGone" xml:space="preserve">
+    <value>Las demás ya no están en disco o se están eliminando.</value>
+  </data>
+  <data name="OthersDeletedBy" xml:space="preserve">
+    <value>Las demás ya se eliminan con {0}.</value>
+  </data>
+  <data name="Quoted" xml:space="preserve">
+    <value>«{0}»</value>
+  </data>
+  <data name="ScriptCopied" xml:space="preserve">
+    <value>Script de PowerShell con las copias marcadas copiado al portapapeles. Revísalo antes de ejecutarlo.</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Copias duplicadas marcadas</value>
+  </data>
+  <data name="GroupTitleOne" xml:space="preserve">
+    <value>{0} · 1 copia de {1}</value>
+  </data>
+  <data name="GroupTitleMany" xml:space="preserve">
+    <value>{0} · {1:N0} copias de {2}</value>
+  </data>
+  <data name="Recoverable" xml:space="preserve">
+    <value>{0} recuperables</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>d MMM yyyy</value>
+  </data>
+  <data name="DeletedBy" xml:space="preserve">
+    <value>Se elimina con «{0}»</value>
+  </data>
+  <data name="LoadFailed" xml:space="preserve">
+    <value>No se pudieron leer las exclusiones de duplicados ({0}). La lista empieza vacía; la próxima exclusión que añadas reemplazará el archivo guardado.</value>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>No se pudieron guardar las exclusiones: {0}</value>
+  </data>
+  <data name="ExclusionsButton" xml:space="preserve">
+    <value>Exclusiones</value>
+  </data>
+  <data name="ExclusionsButtonCount" xml:space="preserve">
+    <value>Exclusiones ({0:N0})</value>
+  </data>
+  <data name="ExcludeFolderItem" xml:space="preserve">
+    <value>Excluir la carpeta «{0}»</value>
+  </data>
+  <data name="ExcludeExtensionItem" xml:space="preserve">
+    <value>Excluir archivos {0}</value>
+  </data>
+  <data name="IgnoreGroupItem" xml:space="preserve">
+    <value>No es duplicado: ignorar este grupo</value>
+  </data>
+  <data name="DialogTitle" xml:space="preserve">
+    <value>Exclusiones de duplicados</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="GroupsTitle" xml:space="preserve">
+    <value>Grupos que no son duplicados</value>
+  </data>
+  <data name="GroupsHint" xml:space="preserve">
+    <value>Marcados con «No es duplicado». Se reconocen por su contenido, aunque cambien de carpeta.</value>
+  </data>
+  <data name="NoGroups" xml:space="preserve">
+    <value>Ninguno.</value>
+  </data>
+  <data name="FolderHeader" xml:space="preserve">
+    <value>Carpeta</value>
+  </data>
+  <data name="FolderPlaceholder" xml:space="preserve">
+    <value>C:\Users\…\Carpeta</value>
+  </data>
+  <data name="BrowseButton" xml:space="preserve">
+    <value>Examinar…</value>
+  </data>
+  <data name="FolderInvalid" xml:space="preserve">
+    <value>Escribe una ruta completa, por ejemplo C:\Users\tu-usuario\Videos.</value>
+  </data>
+  <data name="AddButton" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="FoldersTitle" xml:space="preserve">
+    <value>Carpetas excluidas</value>
+  </data>
+  <data name="FoldersHint" xml:space="preserve">
+    <value>No se buscan duplicados dentro de ellas ni de sus subcarpetas.</value>
+  </data>
+  <data name="NoFolders" xml:space="preserve">
+    <value>Ninguna.</value>
+  </data>
+  <data name="ExtensionsHeader" xml:space="preserve">
+    <value>Extensiones</value>
+  </data>
+  <data name="ExtensionInvalidOne" xml:space="preserve">
+    <value>No es una extensión válida: {0}. Escribe solo la última parte, por ejemplo gz en vez de tar.gz.</value>
+  </data>
+  <data name="ExtensionInvalidMany" xml:space="preserve">
+    <value>No son extensiones válidas: {0}. Escribe solo la última parte, por ejemplo gz en vez de tar.gz.</value>
+  </data>
+  <data name="TypesTitle" xml:space="preserve">
+    <value>Tipos de archivo excluidos</value>
+  </data>
+  <data name="TypesHint" xml:space="preserve">
+    <value>Extensiones separadas por comas.</value>
+  </data>
+  <data name="NoTypes" xml:space="preserve">
+    <value>Ninguno.</value>
+  </data>
+  <data name="RemoveButton" xml:space="preserve">
+    <value>Quitar</value>
+  </data>
+  <data name="RemoveName" xml:space="preserve">
+    <value>Quitar {0}</value>
+  </data>
+</root>

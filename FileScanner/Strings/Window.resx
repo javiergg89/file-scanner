@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DriveItem" xml:space="preserve">
+    <value>Entire drive {0} · {1} used</value>
+    <comment>{0}: drive letter and label, e.g. "C: (Windows)". {1}: used size.</comment>
+  </data>
+  <data name="FolderNotFound" xml:space="preserve">
+    <value>Couldn't find {0}. Scanning your home folder instead.</value>
+    <comment>{0}: folder path.</comment>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Scanning…</value>
+  </data>
+  <data name="SavedUpdating" xml:space="preserve">
+    <value>Saved {0} · updating…</value>
+    <comment>{0}: time since saved, from AgoNow/AgoMinutes/AgoHours/AgoDayOne/AgoDaysMany.</comment>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating…</value>
+  </data>
+  <data name="ScanFinished" xml:space="preserve">
+    <value>Scan finished: {0}</value>
+    <comment>Read by Narrator. {0}: file count and duration.</comment>
+  </data>
+  <data name="ScanCancelledStart" xml:space="preserve">
+    <value>Scan canceled. Select "Rescan" to start.</value>
+    <comment>"Rescan" is the button in the top bar.</comment>
+  </data>
+  <data name="ScanCancelled" xml:space="preserve">
+    <value>Scan canceled</value>
+  </data>
+  <data name="ScanCancelledStale" xml:space="preserve">
+    <value>Scan canceled · sizes may be out of date</value>
+  </data>
+  <data name="CacheNotSaved" xml:space="preserve">
+    <value>Couldn't save the scan: the disk is full or the file is locked. The next launch will scan from scratch.</value>
+  </data>
+  <data name="AgoNow" xml:space="preserve">
+    <value>just now</value>
+  </data>
+  <data name="AgoMinutes" xml:space="preserve">
+    <value>{0} min ago</value>
+    <comment>{0}: minutes.</comment>
+  </data>
+  <data name="AgoHours" xml:space="preserve">
+    <value>{0} h ago</value>
+    <comment>{0}: hours.</comment>
+  </data>
+  <data name="AgoDayOne" xml:space="preserve">
+    <value>1 day ago</value>
+  </data>
+  <data name="AgoDaysMany" xml:space="preserve">
+    <value>{0:N0} days ago</value>
+    <comment>{0}: days.</comment>
+  </data>
+  <data name="FileOne" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="FileMany" xml:space="preserve">
+    <value>files</value>
+  </data>
+  <data name="ItemOne" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="ItemMany" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="GroupOne" xml:space="preserve">
+    <value>group</value>
+  </data>
+  <data name="GroupMany" xml:space="preserve">
+    <value>groups</value>
+  </data>
+  <data name="OpenLabel" xml:space="preserve">
+    <value>View contents of {0}</value>
+    <comment>Accessible name. {0}: recommendation title.</comment>
+  </data>
+  <data name="EnterLabel" xml:space="preserve">
+    <value>Open {0}</value>
+    <comment>Accessible name. {0}: folder name.</comment>
+  </data>
+  <data name="FreeOnDrive" xml:space="preserve">
+    <value>+{0} on {1}</value>
+    <comment>{0}: size. {1}: drive, e.g. "D:".</comment>
+  </data>
+  <data name="FreeHere" xml:space="preserve">
+    <value>+{0} here</value>
+    <comment>{0}: size on the user profile drive.</comment>
+  </data>
+  <data name="NothingSelected" xml:space="preserve">
+    <value>Nothing checked</value>
+  </data>
+  <data name="SelectedSummary" xml:space="preserve">
+    <value>{0} checked · {1}</value>
+    <comment>{0}: size. {1}: group count, e.g. "3 groups".</comment>
+  </data>
+  <data name="RecycleBinSize" xml:space="preserve">
+    <value>Recycle Bin · {0}</value>
+    <comment>{0}: size.</comment>
+  </data>
+  <data name="RecycleBinEmpty" xml:space="preserve">
+    <value>The Recycle Bin is empty</value>
+  </data>
+  <data name="OpenFailed" xml:space="preserve">
+    <value>Couldn't open {0}: {1}</value>
+    <comment>{0}: file name. {1}: system error message.</comment>
+  </data>
+  <data name="CopyFailed" xml:space="preserve">
+    <value>Couldn't copy to the clipboard: another program is using it. Try again.</value>
+  </data>
+  <data name="FolderContents" xml:space="preserve">
+    <value>{0} (contents)</value>
+    <comment>{0}: folder path; its contents are deleted, not the folder.</comment>
+  </data>
+  <data name="AndMore" xml:space="preserve">
+    <value>and {0:N0} more</value>
+    <comment>{0}: number of paths not listed.</comment>
+  </data>
+  <data name="RecycleBinNote" xml:space="preserve">
+    <value>You can restore them from the Recycle Bin, but the space isn't freed until you empty it.</value>
+  </data>
+  <data name="DeleteProtected" xml:space="preserve">
+    <value>Can't delete {0}: it's a Windows or user account folder, or it contains one. Choose what to delete inside it.</value>
+    <comment>{0}: folder path.</comment>
+  </data>
+  <data name="DeleteLastCopy" xml:space="preserve">
+    <value>Can't delete: the last copy of {0} would be lost. Leave at least one copy unchecked in Duplicates.</value>
+    <comment>{0}: file name. "Duplicates" is the tab name.</comment>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Delete?</value>
+  </data>
+  <data name="MoveToRecycleBin" xml:space="preserve">
+    <value>Move to Recycle Bin</value>
+  </data>
+  <data name="DeletePermanently" xml:space="preserve">
+    <value>Delete permanently</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="DeleteCancelledLeft" xml:space="preserve">
+    <value>Delete canceled. Not deleted: {0:N0} of {1:N0}.</value>
+    <comment>{0}: items left. {1}: items in the delete.</comment>
+  </data>
+  <data name="NotDeleted" xml:space="preserve">
+    <value>Not deleted: {0:N0} of {1:N0} (in use or access denied). First one: {2}</value>
+    <comment>{0}: items left. {1}: items in the delete. {2}: first path left.</comment>
+  </data>
+  <data name="NeedsAdmin" xml:space="preserve">
+    <value>Program Files, ProgramData and Windows require administrator rights.</value>
+  </data>
+  <data name="UseCopyScript" xml:space="preserve">
+    <value>Use "Copy script" and run it in PowerShell as administrator.</value>
+    <comment>"Copy script" is the button in the Recommendations footer.</comment>
+  </data>
+  <data name="CopyCommandHint" xml:space="preserve">
+    <value>Copy the command and run it in PowerShell as administrator.</value>
+  </data>
+  <data name="CopyCommandButton" xml:space="preserve">
+    <value>Copy command</value>
+  </data>
+  <data name="NotDeletedTitle" xml:space="preserve">
+    <value>Items that couldn't be deleted</value>
+    <comment>Comment line in the copied PowerShell command.</comment>
+  </data>
+  <data name="CommandCopied" xml:space="preserve">
+    <value>Command copied to the clipboard. Review it and run it in PowerShell as administrator.</value>
+  </data>
+  <data name="QueueDeletingWaiting" xml:space="preserve">
+    <value>Deleting · {0:N0} queued</value>
+    <comment>{0}: deletes waiting.</comment>
+  </data>
+  <data name="QueueDeleting" xml:space="preserve">
+    <value>Deleting</value>
+  </data>
+  <data name="QueueWaiting" xml:space="preserve">
+    <value>{0:N0} queued</value>
+    <comment>{0}: deletes waiting.</comment>
+  </data>
+  <data name="QueueWarningsOne" xml:space="preserve">
+    <value>Delete finished with 1 warning</value>
+  </data>
+  <data name="QueueWarningsMany" xml:space="preserve">
+    <value>Delete finished with {0:N0} warnings</value>
+    <comment>{0}: deletes with warnings.</comment>
+  </data>
+  <data name="QueueCancelled" xml:space="preserve">
+    <value>Delete canceled</value>
+  </data>
+  <data name="QueueFinished" xml:space="preserve">
+    <value>Delete finished</value>
+  </data>
+  <data name="EmptyRecycleTitle" xml:space="preserve">
+    <value>Empty the Recycle Bin?</value>
+  </data>
+  <data name="EmptyRecycleContent" xml:space="preserve">
+    <value>{0} will be permanently deleted.</value>
+    <comment>{0}: size.</comment>
+  </data>
+  <data name="EmptyRecycleButton" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="RecycleBinEmptied" xml:space="preserve">
+    <value>Recycle Bin emptied.</value>
+  </data>
+  <data name="EmptyRecycleFailed" xml:space="preserve">
+    <value>Couldn't empty the Recycle Bin (HRESULT 0x{0:X8}).</value>
+    <comment>{0}: error code.</comment>
+  </data>
+</root>

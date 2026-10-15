@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryCode" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="CategoryGames" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="CategoryMedia" xml:space="preserve">
+    <value>Documents and media</value>
+  </data>
+  <data name="CategoryBrowsers" xml:space="preserve">
+    <value>Browsers</value>
+  </data>
+  <data name="CategoryCommunication" xml:space="preserve">
+    <value>Communication</value>
+  </data>
+  <data name="CategoryEditors" xml:space="preserve">
+    <value>Editors and IDEs</value>
+  </data>
+  <data name="CategoryPackageCaches" xml:space="preserve">
+    <value>Package caches</value>
+  </data>
+  <data name="CategorySdk" xml:space="preserve">
+    <value>SDKs and runtimes</value>
+  </data>
+  <data name="CategoryAiModels" xml:space="preserve">
+    <value>AI models</value>
+  </data>
+  <data name="CategoryVirtualization" xml:space="preserve">
+    <value>Virtual machines</value>
+  </data>
+  <data name="CategoryCloud" xml:space="preserve">
+    <value>Cloud</value>
+  </data>
+  <data name="CategoryTemp" xml:space="preserve">
+    <value>Temporary files</value>
+  </data>
+  <data name="CategoryPrograms" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="CategoryOther" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="AgeUnderMonth" xml:space="preserve">
+    <value>Less than 1 month</value>
+  </data>
+  <data name="AgeMonths" xml:space="preserve">
+    <value>1 to 6 months</value>
+  </data>
+  <data name="AgeYear" xml:space="preserve">
+    <value>6 to 12 months</value>
+  </data>
+  <data name="AgeYears" xml:space="preserve">
+    <value>1 to 3 years</value>
+  </data>
+  <data name="AgeOverYears" xml:space="preserve">
+    <value>More than 3 years</value>
+  </data>
+  <data name="NoChangeDate" xml:space="preserve">
+    <value>Date modified unknown</value>
+  </data>
+  <data name="LastChange" xml:space="preserve">
+    <value>Last modified: {0:MMM d, yyyy}</value>
+    <comment>{0}: local date and time of the newest change.</comment>
+  </data>
+  <data name="FileOne" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="FileMany" xml:space="preserve">
+    <value>files</value>
+  </data>
+  <data name="MarkedForDeletion" xml:space="preserve">
+    <value>checked for deletion</value>
+    <comment>Accessible name suffix of a folder in the chart.</comment>
+  </data>
+  <data name="OpenItem" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="EnterItem" xml:space="preserve">
+    <value>Open</value>
+    <comment>Shows the folder's contents in the chart.</comment>
+  </data>
+  <data name="OpenInExplorerItem" xml:space="preserve">
+    <value>Open in File Explorer</value>
+  </data>
+  <data name="ShowInExplorerItem" xml:space="preserve">
+    <value>Show in File Explorer</value>
+  </data>
+  <data name="CopyPathItem" xml:space="preserve">
+    <value>Copy path</value>
+  </data>
+  <data name="CopyPathsItem" xml:space="preserve">
+    <value>Copy paths</value>
+  </data>
+  <data name="ExportCsvItem" xml:space="preserve">
+    <value>Export to CSV…</value>
+  </data>
+  <data name="ChooseFilesItem" xml:space="preserve">
+    <value>Choose files to delete…</value>
+  </data>
+  <data name="ChooseHereItem" xml:space="preserve">
+    <value>Choose what to delete here…</value>
+  </data>
+  <data name="RemoveChosenItem" xml:space="preserve">
+    <value>Remove from "Chosen by you"</value>
+    <comment>Chosen by you: the list of items the user picked for deletion.</comment>
+  </data>
+  <data name="AddChosenItem" xml:space="preserve">
+    <value>Add to "Chosen by you"</value>
+  </data>
+  <data name="RescanFolderItem" xml:space="preserve">
+    <value>Rescan this folder</value>
+  </data>
+  <data name="DeleteItem" xml:space="preserve">
+    <value>Delete…</value>
+  </data>
+  <data name="DeleteContentsItem" xml:space="preserve">
+    <value>Delete contents…</value>
+  </data>
+  <data name="ContentsOf" xml:space="preserve">
+    <value>Contents of {0}</value>
+    <comment>{0}: folder path. Title of the delete confirmation.</comment>
+  </data>
+  <data name="ClickToGoUp" xml:space="preserve">
+    <value>Click to go up</value>
+  </data>
+  <data name="Rescanning" xml:space="preserve">
+    <value>Rescanning {0}…</value>
+    <comment>{0}: folder name.</comment>
+  </data>
+  <data name="RescanDiscarded" xml:space="preserve">
+    <value>{0} was deleted or rescanned in the meantime. Changes weren't applied.</value>
+    <comment>{0}: folder name.</comment>
+  </data>
+  <data name="FolderUpdated" xml:space="preserve">
+    <value>Folder {0} updated · {1}</value>
+    <comment>{0}: folder name. {1}: new size.</comment>
+  </data>
+  <data name="ViewContentsItem" xml:space="preserve">
+    <value>View contents</value>
+  </data>
+  <data name="ShowInChartItem" xml:space="preserve">
+    <value>Show in chart</value>
+  </data>
+  <data name="ShowFolderInChartItem" xml:space="preserve">
+    <value>Show folder in chart</value>
+  </data>
+  <data name="CheckAllItem" xml:space="preserve">
+    <value>Check all</value>
+  </data>
+  <data name="UncheckAllItem" xml:space="preserve">
+    <value>Uncheck all</value>
+  </data>
+  <data name="DeleteCheckedItem" xml:space="preserve">
+    <value>Delete checked items…</value>
+  </data>
+</root>

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="FileScanner/FileScanner.csproj" />
+  <Project Path="FileScanner.Check/FileScanner.Check.csproj" />
+</Solution>

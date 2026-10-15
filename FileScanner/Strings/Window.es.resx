@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DriveItem" xml:space="preserve">
+    <value>Unidad {0} completa · {1} usados</value>
+  </data>
+  <data name="FolderNotFound" xml:space="preserve">
+    <value>No se encuentra {0}. Se escanea la carpeta personal.</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Escaneando…</value>
+  </data>
+  <data name="SavedUpdating" xml:space="preserve">
+    <value>Guardado {0} · actualizando…</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Actualizando…</value>
+  </data>
+  <data name="ScanFinished" xml:space="preserve">
+    <value>Escaneo terminado: {0}</value>
+  </data>
+  <data name="ScanCancelledStart" xml:space="preserve">
+    <value>Escaneo cancelado. Pulsa «Volver a escanear» para empezar.</value>
+  </data>
+  <data name="ScanCancelled" xml:space="preserve">
+    <value>Escaneo cancelado</value>
+  </data>
+  <data name="ScanCancelledStale" xml:space="preserve">
+    <value>Escaneo cancelado · los tamaños pueden no estar al día</value>
+  </data>
+  <data name="CacheNotSaved" xml:space="preserve">
+    <value>No se pudo guardar el escaneo: el disco está lleno o el archivo está bloqueado. La próxima vez que abras File Scanner se escaneará desde cero.</value>
+  </data>
+  <data name="AgoNow" xml:space="preserve">
+    <value>hace un momento</value>
+  </data>
+  <data name="AgoMinutes" xml:space="preserve">
+    <value>hace {0} min</value>
+  </data>
+  <data name="AgoHours" xml:space="preserve">
+    <value>hace {0} h</value>
+  </data>
+  <data name="AgoDayOne" xml:space="preserve">
+    <value>hace 1 día</value>
+  </data>
+  <data name="AgoDaysMany" xml:space="preserve">
+    <value>hace {0:N0} días</value>
+  </data>
+  <data name="FileOne" xml:space="preserve">
+    <value>archivo</value>
+  </data>
+  <data name="FileMany" xml:space="preserve">
+    <value>archivos</value>
+  </data>
+  <data name="ItemOne" xml:space="preserve">
+    <value>elemento</value>
+  </data>
+  <data name="ItemMany" xml:space="preserve">
+    <value>elementos</value>
+  </data>
+  <data name="GroupOne" xml:space="preserve">
+    <value>grupo</value>
+  </data>
+  <data name="GroupMany" xml:space="preserve">
+    <value>grupos</value>
+  </data>
+  <data name="OpenLabel" xml:space="preserve">
+    <value>Ver contenido de {0}</value>
+  </data>
+  <data name="EnterLabel" xml:space="preserve">
+    <value>Entrar en {0}</value>
+  </data>
+  <data name="FreeOnDrive" xml:space="preserve">
+    <value>+{0} en {1}</value>
+  </data>
+  <data name="FreeHere" xml:space="preserve">
+    <value>+{0} aquí</value>
+  </data>
+  <data name="NothingSelected" xml:space="preserve">
+    <value>Nada marcado</value>
+  </data>
+  <data name="SelectedSummary" xml:space="preserve">
+    <value>{0} marcados · {1}</value>
+  </data>
+  <data name="RecycleBinSize" xml:space="preserve">
+    <value>Papelera · {0}</value>
+  </data>
+  <data name="RecycleBinEmpty" xml:space="preserve">
+    <value>Papelera vacía</value>
+  </data>
+  <data name="OpenFailed" xml:space="preserve">
+    <value>No se pudo abrir {0}: {1}</value>
+  </data>
+  <data name="CopyFailed" xml:space="preserve">
+    <value>No se pudo copiar al portapapeles: lo está usando otro programa. Vuelve a intentarlo.</value>
+  </data>
+  <data name="FolderContents" xml:space="preserve">
+    <value>Contenido de {0}</value>
+  </data>
+  <data name="AndMore" xml:space="preserve">
+    <value>y {0:N0} más</value>
+  </data>
+  <data name="RecycleBinNote" xml:space="preserve">
+    <value>Puedes recuperarlos desde la papelera, pero el espacio no se libera hasta que la vacíes.</value>
+  </data>
+  <data name="DeleteProtected" xml:space="preserve">
+    <value>No se puede eliminar {0}: es una carpeta de Windows o de tu cuenta, o contiene una. Elige qué eliminar dentro de ella.</value>
+  </data>
+  <data name="DeleteLastCopy" xml:space="preserve">
+    <value>No se puede eliminar: se perdería la última copia de {0}. Deja al menos una copia sin marcar en Duplicados.</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>¿Eliminar?</value>
+  </data>
+  <data name="MoveToRecycleBin" xml:space="preserve">
+    <value>Enviar a la papelera</value>
+  </data>
+  <data name="DeletePermanently" xml:space="preserve">
+    <value>Eliminar definitivamente</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="DeleteCancelledLeft" xml:space="preserve">
+    <value>Eliminación cancelada. Sin eliminar: {0:N0} de {1:N0}.</value>
+  </data>
+  <data name="NotDeleted" xml:space="preserve">
+    <value>Sin eliminar: {0:N0} de {1:N0} (en uso o sin permiso). El primero: {2}</value>
+  </data>
+  <data name="NeedsAdmin" xml:space="preserve">
+    <value>Archivos de programa, ProgramData y Windows requieren permisos de administrador.</value>
+  </data>
+  <data name="UseCopyScript" xml:space="preserve">
+    <value>Usa «Copiar script» y ejecútalo en PowerShell como administrador.</value>
+  </data>
+  <data name="CopyCommandHint" xml:space="preserve">
+    <value>Copia el comando y ejecútalo en PowerShell como administrador.</value>
+  </data>
+  <data name="CopyCommandButton" xml:space="preserve">
+    <value>Copiar comando</value>
+  </data>
+  <data name="NotDeletedTitle" xml:space="preserve">
+    <value>Elementos que no se pudieron eliminar</value>
+  </data>
+  <data name="CommandCopied" xml:space="preserve">
+    <value>Comando copiado al portapapeles. Revísalo y ejecútalo en PowerShell como administrador.</value>
+  </data>
+  <data name="QueueDeletingWaiting" xml:space="preserve">
+    <value>Eliminando · {0:N0} en cola</value>
+  </data>
+  <data name="QueueDeleting" xml:space="preserve">
+    <value>Eliminando</value>
+  </data>
+  <data name="QueueWaiting" xml:space="preserve">
+    <value>{0:N0} en cola</value>
+  </data>
+  <data name="QueueWarningsOne" xml:space="preserve">
+    <value>Eliminación terminada con 1 aviso</value>
+  </data>
+  <data name="QueueWarningsMany" xml:space="preserve">
+    <value>Eliminación terminada con {0:N0} avisos</value>
+  </data>
+  <data name="QueueCancelled" xml:space="preserve">
+    <value>Eliminación cancelada</value>
+  </data>
+  <data name="QueueFinished" xml:space="preserve">
+    <value>Eliminación terminada</value>
+  </data>
+  <data name="EmptyRecycleTitle" xml:space="preserve">
+    <value>¿Vaciar la papelera?</value>
+  </data>
+  <data name="EmptyRecycleContent" xml:space="preserve">
+    <value>Se eliminarán definitivamente {0}.</value>
+  </data>
+  <data name="EmptyRecycleButton" xml:space="preserve">
+    <value>Vaciar</value>
+  </data>
+  <data name="RecycleBinEmptied" xml:space="preserve">
+    <value>Papelera vaciada.</value>
+  </data>
+  <data name="EmptyRecycleFailed" xml:space="preserve">
+    <value>No se pudo vaciar la papelera (error 0x{0:X8}). Vuelve a intentarlo o vacíala desde el Explorador de archivos.</value>
+  </data>
+</root>

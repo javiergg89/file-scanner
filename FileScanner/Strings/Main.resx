@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RecOpenTip" xml:space="preserve">
+    <value>View contents and choose what to delete</value>
+  </data>
+  <data name="NotDuplicateButton" xml:space="preserve">
+    <value>Not a duplicate</value>
+  </data>
+  <data name="NotDuplicateTip" xml:space="preserve">
+    <value>Don't show this group again. You can undo this in Exclusions.</value>
+  </data>
+  <data name="EnterTip" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="QueueTitle" xml:space="preserve">
+    <value>Delete queue</value>
+  </data>
+  <data name="QueueHint" xml:space="preserve">
+    <value>The Windows progress dialog shows the percentage and speed of each delete and lets you cancel it.</value>
+  </data>
+  <data name="ClearFinishedButton" xml:space="preserve">
+    <value>Clear finished</value>
+  </data>
+  <data name="RecycleTip" xml:space="preserve">
+    <value>Empty the Recycle Bin</value>
+  </data>
+  <data name="RecycleButton" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
+  <data name="ScopeTip" xml:space="preserve">
+    <value>Folders to scan</value>
+  </data>
+  <data name="ScopeHome" xml:space="preserve">
+    <value>Home folder</value>
+  </data>
+  <data name="ScopeTitle" xml:space="preserve">
+    <value>What to scan</value>
+  </data>
+  <data name="ScopeProgramFiles" xml:space="preserve">
+    <value>Program Files</value>
+  </data>
+  <data name="ScopeProgramFilesX86" xml:space="preserve">
+    <value>Program Files (x86)</value>
+  </data>
+  <data name="DragFolderHint" xml:space="preserve">
+    <value>You can also drag a folder onto the window to scan only that folder.</value>
+  </data>
+  <data name="PickFolderButton" xml:space="preserve">
+    <value>Choose folder…</value>
+  </data>
+  <data name="ScanButton" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="RescanButton" xml:space="preserve">
+    <value>Rescan</value>
+  </data>
+  <data name="FreeAfterTip" xml:space="preserve">
+    <value>Free space on the drive of your home folder if the checked items are permanently deleted. Items moved to the Recycle Bin take up space until you empty it.</value>
+  </data>
+  <data name="FreeAfterLabel" xml:space="preserve">
+    <value>Free after cleanup</value>
+  </data>
+  <data name="SafeLabel" xml:space="preserve">
+    <value>Safe to delete</value>
+  </data>
+  <data name="ReviewAndLeftoversLabel" xml:space="preserve">
+    <value>Review first and program leftovers</value>
+  </data>
+  <data name="NotScannedLabel" xml:space="preserve">
+    <value>Not scanned</value>
+  </data>
+  <data name="NotScannedDetail" xml:space="preserve">
+    <value>system and programs</value>
+  </data>
+  <data name="DiskUsageTitle" xml:space="preserve">
+    <value>Disk usage</value>
+  </data>
+  <data name="ChartHelpName" xml:space="preserve">
+    <value>How to use the chart</value>
+  </data>
+  <data name="ChartHelpTip" xml:space="preserve">
+    <value>Click to open, right-click for more options. Press Backspace or the mouse back button to go up.</value>
+  </data>
+  <data name="ChartHelpTitle" xml:space="preserve">
+    <value>How to use</value>
+  </data>
+  <data name="ChartHelpClick" xml:space="preserve">
+    <value>Click a segment or tile to open that folder.</value>
+  </data>
+  <data name="ChartHelpRightClick" xml:space="preserve">
+    <value>Right-click for more options: open, copy path, choose what to delete or rescan.</value>
+  </data>
+  <data name="ChartHelpUp" xml:space="preserve">
+    <value>To go up: click the center of the rings, press Backspace or use the mouse back button.</value>
+  </data>
+  <data name="RingsTab" xml:space="preserve">
+    <value>Rings</value>
+  </data>
+  <data name="MapTab" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="ListTab" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="TypesTab" xml:space="preserve">
+    <value>Types</value>
+  </data>
+  <data name="LargestTab" xml:space="preserve">
+    <value>Largest</value>
+  </data>
+  <data name="DuplicatesTab" xml:space="preserve">
+    <value>Duplicates</value>
+  </data>
+  <data name="FindDuplicatesButton" xml:space="preserve">
+    <value>Find duplicates</value>
+  </data>
+  <data name="MinSizeName" xml:space="preserve">
+    <value>Minimum size</value>
+  </data>
+  <data name="MinSize1" xml:space="preserve">
+    <value>1 MB or more</value>
+  </data>
+  <data name="MinSize10" xml:space="preserve">
+    <value>10 MB or more</value>
+  </data>
+  <data name="MinSize100" xml:space="preserve">
+    <value>100 MB or more</value>
+  </data>
+  <data name="ExclusionsButton" xml:space="preserve">
+    <value>Exclusions</value>
+  </data>
+  <data name="ExclusionsTip" xml:space="preserve">
+    <value>Folders, file types and groups the search ignores</value>
+  </data>
+  <data name="DuplicatesIntro" xml:space="preserve">
+    <value>Finds files with the same content in the scanned folders. Use the buttons below to delete the copies you check. Right-click a copy for more options.</value>
+  </data>
+  <data name="NoCopiesChecked" xml:space="preserve">
+    <value>No copies checked</value>
+  </data>
+  <data name="MarkExtraButton" xml:space="preserve">
+    <value>Check extra copies</value>
+  </data>
+  <data name="MarkExtraTip" xml:space="preserve">
+    <value>Check every copy except the oldest one in each group</value>
+  </data>
+  <data name="UncheckAllButton" xml:space="preserve">
+    <value>Uncheck all</value>
+  </data>
+  <data name="CopyScriptButton" xml:space="preserve">
+    <value>Copy script</value>
+  </data>
+  <data name="DeleteCopiesTip" xml:space="preserve">
+    <value>Delete the checked copies now</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Delete…</value>
+  </data>
+  <data name="UpName" xml:space="preserve">
+    <value>Up one level</value>
+  </data>
+  <data name="UpTip" xml:space="preserve">
+    <value>Up one level (Backspace)</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search folders</value>
+  </data>
+  <data name="SearchName" xml:space="preserve">
+    <value>Search folders by name</value>
+  </data>
+  <data name="SearchTip" xml:space="preserve">
+    <value>Search folders by name across the whole scan (Ctrl+F). Supports the * and ? wildcards.</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Scanning…</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TypesIntro" xml:space="preserve">
+    <value>Space used by each file type in the folder shown in the path.</value>
+  </data>
+  <data name="TypesListName" xml:space="preserve">
+    <value>File types</value>
+  </data>
+  <data name="LargestIntro" xml:space="preserve">
+    <value>The largest files in the folder shown in the path, including subfolders.</value>
+  </data>
+  <data name="LargestListName" xml:space="preserve">
+    <value>Largest files</value>
+  </data>
+  <data name="NameColumn" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SizeColumn" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="FilesColumn" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="ModifiedColumn" xml:space="preserve">
+    <value>Date modified</value>
+  </data>
+  <data name="FolderContentsName" xml:space="preserve">
+    <value>Folder contents</value>
+  </data>
+  <data name="EmptyFolder" xml:space="preserve">
+    <value>This folder is empty.</value>
+  </data>
+  <data name="ColorModeName" xml:space="preserve">
+    <value>Chart colors</value>
+  </data>
+  <data name="ColorModeTip" xml:space="preserve">
+    <value>Color by category or by the latest change inside each folder</value>
+  </data>
+  <data name="ColorByCategory" xml:space="preserve">
+    <value>Color by category</value>
+  </data>
+  <data name="ColorByAge" xml:space="preserve">
+    <value>Color by age</value>
+  </data>
+  <data name="CancelScanTip" xml:space="preserve">
+    <value>Cancel the scan</value>
+  </data>
+  <data name="RecommendationsTitle" xml:space="preserve">
+    <value>Recommendations</value>
+  </data>
+  <data name="RecommendationsHint" xml:space="preserve">
+    <value>Check whole folders, or open them to choose what to delete. Right-click for more options.</value>
+  </data>
+  <data name="Analyzing" xml:space="preserve">
+    <value>Analyzing…</value>
+  </data>
+  <data name="NothingToClean" xml:space="preserve">
+    <value>Nothing to clean up in this category.</value>
+  </data>
+  <data name="ReviewFirstLabel" xml:space="preserve">
+    <value>Review first</value>
+  </data>
+  <data name="LeftoversTitle" xml:space="preserve">
+    <value>Possible program leftovers</value>
+  </data>
+  <data name="LeftoversHint" xml:space="preserve">
+    <value>Folders that don't match any program installed in Windows and haven't changed in 60 days. They might be Microsoft Store apps, portable programs or saved games, so open them before you delete them.</value>
+  </data>
+  <data name="ChosenByYouLabel" xml:space="preserve">
+    <value>Chosen by you</value>
+  </data>
+  <data name="GrownLabel" xml:space="preserve">
+    <value>Has grown</value>
+  </data>
+  <data name="GrownListName" xml:space="preserve">
+    <value>Folders that have grown</value>
+  </data>
+  <data name="BackToRecommendations" xml:space="preserve">
+    <value>Back to recommendations</value>
+  </data>
+  <data name="NothingChecked" xml:space="preserve">
+    <value>Nothing checked</value>
+  </data>
+  <data name="CheckSafeButton" xml:space="preserve">
+    <value>Check safe items</value>
+  </data>
+  <data name="DeleteCheckedTip" xml:space="preserve">
+    <value>Delete the checked items now</value>
+  </data>
+</root>

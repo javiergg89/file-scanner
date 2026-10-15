@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FilesNode" xml:space="preserve">
+    <value>Files</value>
+    <comment>Map block that groups the loose files of a folder.</comment>
+  </data>
+  <data name="ComputerNode" xml:space="preserve">
+    <value>This PC</value>
+    <comment>Root that groups several scanned drives.</comment>
+  </data>
+  <data name="ScopeHome" xml:space="preserve">
+    <value>Home folder</value>
+  </data>
+  <data name="ScopeHomePlus" xml:space="preserve">
+    <value>Home + {0}</value>
+    <comment>{0}: number of other folders chosen.</comment>
+  </data>
+  <data name="ScopeFolders" xml:space="preserve">
+    <value>{0} folders</value>
+    <comment>{0}: number of folders chosen, never 1.</comment>
+  </data>
+  <data name="DuplicatesFinding" xml:space="preserve">
+    <value>Finding files</value>
+    <comment>Progress stage; the UI adds "…" and the count.</comment>
+  </data>
+  <data name="DuplicatesComparingEdges" xml:space="preserve">
+    <value>Comparing start and end</value>
+    <comment>Progress stage: hashes the first and last bytes of each file.</comment>
+  </data>
+  <data name="DuplicatesComparingContent" xml:space="preserve">
+    <value>Comparing contents</value>
+    <comment>Progress stage: hashes whole files.</comment>
+  </data>
+  <data name="CsvPath" xml:space="preserve">
+    <value>Path</value>
+    <comment>CSV column header.</comment>
+  </data>
+  <data name="CsvSize" xml:space="preserve">
+    <value>Size in bytes</value>
+    <comment>CSV column header.</comment>
+  </data>
+  <data name="CsvFiles" xml:space="preserve">
+    <value>Files</value>
+    <comment>CSV column header: number of files inside.</comment>
+  </data>
+  <data name="CsvModified" xml:space="preserve">
+    <value>Date modified</value>
+    <comment>CSV column header: newest change inside the folder.</comment>
+  </data>
+</root>

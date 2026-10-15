@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ReadingFiles" xml:space="preserve">
+    <value>Reading the folder's files…</value>
+  </data>
+  <data name="NoFiles" xml:space="preserve">
+    <value>This folder has no files.</value>
+  </data>
+  <data name="FileOne" xml:space="preserve">
+    <value>file</value>
+    <comment>After a number: 1 file.</comment>
+  </data>
+  <data name="FileMany" xml:space="preserve">
+    <value>files</value>
+    <comment>After a number: 3 files.</comment>
+  </data>
+  <data name="LargestTop" xml:space="preserve">
+    <value>The {0:N0} largest files</value>
+    <comment>{0}: number of files.</comment>
+  </data>
+  <data name="LargestSummary" xml:space="preserve">
+    <value>{0} · {1}. Right-click a file for more options.</value>
+    <comment>{0}: number of files shown; {1}: their total size.</comment>
+  </data>
+  <data name="IncludedIn" xml:space="preserve">
+    <value>Will be deleted by "{0}"</value>
+    <comment>{0}: name of the selection that already deletes the file.</comment>
+  </data>
+  <data name="AlreadyIncluded" xml:space="preserve">
+    <value>This file will already be deleted by "{0}". Uncheck it there to keep it.</value>
+    <comment>{0}: name of the selection that already deletes the file.</comment>
+  </data>
+  <data name="OpenItem" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ShowInExplorerItem" xml:space="preserve">
+    <value>Show in File Explorer</value>
+  </data>
+  <data name="CopyPathItem" xml:space="preserve">
+    <value>Copy path</value>
+  </data>
+  <data name="ShowFolderInChartItem" xml:space="preserve">
+    <value>Show folder in chart</value>
+  </data>
+  <data name="AddToPicksItem" xml:space="preserve">
+    <value>Add to "Chosen by you"</value>
+  </data>
+  <data name="RemoveFromPicksItem" xml:space="preserve">
+    <value>Remove from "Chosen by you"</value>
+  </data>
+  <data name="DeleteItem" xml:space="preserve">
+    <value>Delete…</value>
+  </data>
+  <data name="NoExtension" xml:space="preserve">
+    <value>No extension</value>
+  </data>
+  <data name="TypeOne" xml:space="preserve">
+    <value>type</value>
+    <comment>After a number: 1 type.</comment>
+  </data>
+  <data name="TypeMany" xml:space="preserve">
+    <value>types</value>
+    <comment>After a number: 3 types.</comment>
+  </data>
+  <data name="TypesSummary" xml:space="preserve">
+    <value>{0} · {1} in {2}</value>
+    <comment>{0}: number of types; {1}: total size; {2}: number of files.</comment>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ColumnSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="ColumnFiles" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="ColumnModified" xml:space="preserve">
+    <value>Date modified</value>
+  </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>Sort by name</value>
+  </data>
+  <data name="SortBySize" xml:space="preserve">
+    <value>Sort by size</value>
+  </data>
+  <data name="SortByFiles" xml:space="preserve">
+    <value>Sort by number of files</value>
+  </data>
+  <data name="SortByModified" xml:space="preserve">
+    <value>Sort by date modified</value>
+  </data>
+  <data name="SortedDescending" xml:space="preserve">
+    <value>{0}, sorted descending</value>
+    <comment>{0}: column name.</comment>
+  </data>
+  <data name="SortedAscending" xml:space="preserve">
+    <value>{0}, sorted ascending</value>
+    <comment>{0}: column name.</comment>
+  </data>
+  <data name="GrowthRow" xml:space="preserve">
+    <value>{0}, {1}, now {2}</value>
+    <comment>Screen reader text. {0}: folder name; {1}: growth such as +2.3 GB; {2}: current size.</comment>
+  </data>
+  <data name="GrowthNote" xml:space="preserve">
+    <value>+{0} since the scan {1}</value>
+    <comment>{0}: size; {1}: time such as "3 days ago".</comment>
+  </data>
+  <data name="GrowthInfo" xml:space="preserve">
+    <value>Folders that take up at least {0} more than in the scan saved {1}. Click one to show it in the chart.</value>
+    <comment>{0}: size; {1}: time such as "3 days ago".</comment>
+  </data>
+  <data name="NoMatchingFolders" xml:space="preserve">
+    <value>No matching folders</value>
+  </data>
+  <data name="FolderOpened" xml:space="preserve">
+    <value>Opened {0}, {1}</value>
+    <comment>Screen reader text. {0}: folder name; {1}: size.</comment>
+  </data>
+  <data name="DropToScan" xml:space="preserve">
+    <value>Scan this folder</value>
+  </data>
+  <data name="DropNotFolder" xml:space="preserve">
+    <value>Only folders can be scanned. Drop a folder.</value>
+  </data>
+  <data name="ExportFileName" xml:space="preserve">
+    <value>{0} folder sizes</value>
+    <comment>Suggested file name. {0}: folder name.</comment>
+  </data>
+  <data name="CsvFileType" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>Couldn't save {0}: {1}</value>
+    <comment>{0}: file name; {1}: system error message.</comment>
+  </data>
+  <data name="ExportedOne" xml:space="preserve">
+    <value>Exported 1 folder to {0}.</value>
+    <comment>{0}: file name.</comment>
+  </data>
+  <data name="ExportedMany" xml:space="preserve">
+    <value>Exported {0:N0} folders to {1}.</value>
+    <comment>{0}: number of folders; {1}: file name.</comment>
+  </data>
+  <data name="FolderFallbackName" xml:space="preserve">
+    <value>folder</value>
+    <comment>File name used when the folder name has no valid characters.</comment>
+  </data>
+  <data name="WatchUnavailable" xml:space="preserve">
+    <value>Can't track changes in {0}. Rescan to see them.</value>
+    <comment>{0}: folder path.</comment>
+  </data>
+  <data name="WatchOverflow" xml:space="preserve">
+    <value>Too many changes on the disk at once. Rescan to correct the sizes.</value>
+  </data>
+  <data name="WatchRestarted" xml:space="preserve">
+    <value>Change tracking stopped ({0}) and restarted. If changes are missing, rescan.</value>
+    <comment>{0}: system error message.</comment>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Date pattern for the Modified column.</comment>
+  </data>
+</root>

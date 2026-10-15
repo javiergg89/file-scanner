@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ManualTitle" xml:space="preserve">
+    <value>Chosen by you</value>
+  </data>
+  <data name="CheckAllButton" xml:space="preserve">
+    <value>Check all</value>
+  </data>
+  <data name="CheckSafeButton" xml:space="preserve">
+    <value>Check safe items</value>
+  </data>
+  <data name="CopyScriptAllButton" xml:space="preserve">
+    <value>Copy script (all)</value>
+  </data>
+  <data name="CopyScriptButton" xml:space="preserve">
+    <value>Copy script</value>
+  </data>
+  <data name="DeleteAllCheckedButton" xml:space="preserve">
+    <value>Delete all checked…</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Delete…</value>
+  </data>
+  <data name="ScriptCopied" xml:space="preserve">
+    <value>PowerShell script copied to the clipboard. Review it before you run it.</value>
+  </data>
+  <data name="AllCheckedTitle" xml:space="preserve">
+    <value>Everything checked in the recommendations</value>
+  </data>
+  <data name="VitalRefused" xml:space="preserve">
+    <value>Can't check all of {0}: it's a Windows or user account folder, or it contains one. Open it and check what you want to delete.</value>
+    <comment>{0}: folder path.</comment>
+  </data>
+  <data name="ItemOne" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="ItemMany" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="JobWaitingRecycle" xml:space="preserve">
+    <value>Queued for the Recycle Bin · {0}</value>
+    <comment>{0}: item count and size, e.g. "3 items · 1.2 GB".</comment>
+  </data>
+  <data name="JobWaitingPermanent" xml:space="preserve">
+    <value>Queued for permanent deletion · {0}</value>
+    <comment>{0}: item count and size.</comment>
+  </data>
+  <data name="JobRunningRecycle" xml:space="preserve">
+    <value>Moving to the Recycle Bin · {0}</value>
+    <comment>{0}: item count and size.</comment>
+  </data>
+  <data name="JobRunningPermanent" xml:space="preserve">
+    <value>Deleting permanently · {0}</value>
+    <comment>{0}: item count and size.</comment>
+  </data>
+  <data name="JobDoneRecycle" xml:space="preserve">
+    <value>Moved to the Recycle Bin · {0}</value>
+    <comment>{0}: item count and size.</comment>
+  </data>
+  <data name="JobDonePermanent" xml:space="preserve">
+    <value>Deleted permanently · {0}</value>
+    <comment>{0}: item count and size.</comment>
+  </data>
+  <data name="JobCancelledOne" xml:space="preserve">
+    <value>Canceled · the item wasn't deleted</value>
+  </data>
+  <data name="JobCancelledMany" xml:space="preserve">
+    <value>Canceled · {0:N0} of {1:N0} items not deleted</value>
+    <comment>{0}: items left; {1}: items in the job.</comment>
+  </data>
+  <data name="JobFailedOne" xml:space="preserve">
+    <value>Couldn't delete the item: it's in use or you don't have permission.</value>
+  </data>
+  <data name="JobFailedMany" xml:space="preserve">
+    <value>Couldn't delete {0:N0} of {1:N0} items: they're in use or you don't have permission.</value>
+    <comment>{0}: items left; {1}: items in the job.</comment>
+  </data>
+</root>

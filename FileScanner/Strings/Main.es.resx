@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RecOpenTip" xml:space="preserve">
+    <value>Ver contenido y elegir qué eliminar</value>
+  </data>
+  <data name="NotDuplicateButton" xml:space="preserve">
+    <value>No es duplicado</value>
+  </data>
+  <data name="NotDuplicateTip" xml:space="preserve">
+    <value>No volver a mostrar este grupo. Se puede deshacer en «Exclusiones».</value>
+  </data>
+  <data name="EnterTip" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="QueueTitle" xml:space="preserve">
+    <value>Cola de eliminación</value>
+  </data>
+  <data name="QueueHint" xml:space="preserve">
+    <value>El cuadro de progreso de Windows muestra el porcentaje y la velocidad de cada eliminación y permite cancelarla.</value>
+  </data>
+  <data name="ClearFinishedButton" xml:space="preserve">
+    <value>Quitar terminados</value>
+  </data>
+  <data name="RecycleTip" xml:space="preserve">
+    <value>Vaciar la papelera</value>
+  </data>
+  <data name="RecycleButton" xml:space="preserve">
+    <value>Papelera</value>
+  </data>
+  <data name="ScopeTip" xml:space="preserve">
+    <value>Qué carpetas escanear</value>
+  </data>
+  <data name="ScopeHome" xml:space="preserve">
+    <value>Carpeta personal</value>
+  </data>
+  <data name="ScopeTitle" xml:space="preserve">
+    <value>Qué escanear</value>
+  </data>
+  <data name="ScopeProgramFiles" xml:space="preserve">
+    <value>Archivos de programa</value>
+  </data>
+  <data name="ScopeProgramFilesX86" xml:space="preserve">
+    <value>Archivos de programa (x86)</value>
+  </data>
+  <data name="DragFolderHint" xml:space="preserve">
+    <value>También puedes arrastrar una carpeta a la ventana para escanear solo esa.</value>
+  </data>
+  <data name="PickFolderButton" xml:space="preserve">
+    <value>Elegir carpeta…</value>
+  </data>
+  <data name="ScanButton" xml:space="preserve">
+    <value>Escanear</value>
+  </data>
+  <data name="RescanButton" xml:space="preserve">
+    <value>Volver a escanear</value>
+  </data>
+  <data name="FreeAfterTip" xml:space="preserve">
+    <value>Espacio libre en la unidad de tu carpeta personal si se elimina definitivamente lo marcado. Lo que va a la papelera sigue ocupando espacio hasta que la vacíes.</value>
+  </data>
+  <data name="FreeAfterLabel" xml:space="preserve">
+    <value>Libre tras la limpieza</value>
+  </data>
+  <data name="SafeLabel" xml:space="preserve">
+    <value>Seguro para eliminar</value>
+  </data>
+  <data name="ReviewAndLeftoversLabel" xml:space="preserve">
+    <value>Revisar primero y restos</value>
+  </data>
+  <data name="NotScannedLabel" xml:space="preserve">
+    <value>Sin escanear</value>
+  </data>
+  <data name="NotScannedDetail" xml:space="preserve">
+    <value>sistema y programas</value>
+  </data>
+  <data name="DiskUsageTitle" xml:space="preserve">
+    <value>Uso del disco</value>
+  </data>
+  <data name="ChartHelpName" xml:space="preserve">
+    <value>Cómo se usa el gráfico</value>
+  </data>
+  <data name="ChartHelpTip" xml:space="preserve">
+    <value>Clic para entrar, clic derecho para más opciones. Retroceso o el botón atrás del ratón para subir.</value>
+  </data>
+  <data name="ChartHelpTitle" xml:space="preserve">
+    <value>Cómo se usa</value>
+  </data>
+  <data name="ChartHelpClick" xml:space="preserve">
+    <value>Clic en un sector o recuadro para entrar en esa carpeta.</value>
+  </data>
+  <data name="ChartHelpRightClick" xml:space="preserve">
+    <value>Clic derecho para más opciones: abrir, copiar la ruta, elegir qué eliminar o volver a escanear.</value>
+  </data>
+  <data name="ChartHelpUp" xml:space="preserve">
+    <value>Para subir: clic en el centro de los anillos, Retroceso o el botón atrás del ratón.</value>
+  </data>
+  <data name="RingsTab" xml:space="preserve">
+    <value>Anillos</value>
+  </data>
+  <data name="MapTab" xml:space="preserve">
+    <value>Mapa</value>
+  </data>
+  <data name="ListTab" xml:space="preserve">
+    <value>Lista</value>
+  </data>
+  <data name="TypesTab" xml:space="preserve">
+    <value>Tipos</value>
+  </data>
+  <data name="LargestTab" xml:space="preserve">
+    <value>Más grandes</value>
+  </data>
+  <data name="DuplicatesTab" xml:space="preserve">
+    <value>Duplicados</value>
+  </data>
+  <data name="FindDuplicatesButton" xml:space="preserve">
+    <value>Buscar duplicados</value>
+  </data>
+  <data name="MinSizeName" xml:space="preserve">
+    <value>Tamaño mínimo</value>
+  </data>
+  <data name="MinSize1" xml:space="preserve">
+    <value>1 MB o más</value>
+  </data>
+  <data name="MinSize10" xml:space="preserve">
+    <value>10 MB o más</value>
+  </data>
+  <data name="MinSize100" xml:space="preserve">
+    <value>100 MB o más</value>
+  </data>
+  <data name="ExclusionsButton" xml:space="preserve">
+    <value>Exclusiones</value>
+  </data>
+  <data name="ExclusionsTip" xml:space="preserve">
+    <value>Carpetas, tipos de archivo y grupos que la búsqueda ignora</value>
+  </data>
+  <data name="DuplicatesIntro" xml:space="preserve">
+    <value>Busca archivos con el mismo contenido en las carpetas escaneadas. Las copias que marques se eliminan con los botones de abajo. Clic derecho en una copia para más opciones.</value>
+  </data>
+  <data name="NoCopiesChecked" xml:space="preserve">
+    <value>Ninguna copia marcada</value>
+  </data>
+  <data name="MarkExtraButton" xml:space="preserve">
+    <value>Marcar copias de más</value>
+  </data>
+  <data name="MarkExtraTip" xml:space="preserve">
+    <value>Marcar todas las copias menos la más antigua de cada grupo</value>
+  </data>
+  <data name="UncheckAllButton" xml:space="preserve">
+    <value>Desmarcar todo</value>
+  </data>
+  <data name="CopyScriptButton" xml:space="preserve">
+    <value>Copiar script</value>
+  </data>
+  <data name="DeleteCopiesTip" xml:space="preserve">
+    <value>Eliminar ahora las copias marcadas</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Eliminar…</value>
+  </data>
+  <data name="UpName" xml:space="preserve">
+    <value>Subir un nivel</value>
+  </data>
+  <data name="UpTip" xml:space="preserve">
+    <value>Subir un nivel (Retroceso)</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Buscar carpeta</value>
+  </data>
+  <data name="SearchName" xml:space="preserve">
+    <value>Buscar carpeta por nombre</value>
+  </data>
+  <data name="SearchTip" xml:space="preserve">
+    <value>Buscar carpeta por nombre en todo el escaneo (Ctrl+F). Admite los comodines * y ?.</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Escaneando…</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="TypesIntro" xml:space="preserve">
+    <value>Espacio que ocupa cada tipo de archivo en la carpeta que muestra la ruta.</value>
+  </data>
+  <data name="TypesListName" xml:space="preserve">
+    <value>Tipos de archivo</value>
+  </data>
+  <data name="LargestIntro" xml:space="preserve">
+    <value>Los archivos más grandes de la carpeta que muestra la ruta, subcarpetas incluidas.</value>
+  </data>
+  <data name="LargestListName" xml:space="preserve">
+    <value>Archivos más grandes</value>
+  </data>
+  <data name="NameColumn" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="SizeColumn" xml:space="preserve">
+    <value>Tamaño</value>
+  </data>
+  <data name="FilesColumn" xml:space="preserve">
+    <value>Archivos</value>
+  </data>
+  <data name="ModifiedColumn" xml:space="preserve">
+    <value>Modificado</value>
+  </data>
+  <data name="FolderContentsName" xml:space="preserve">
+    <value>Contenido de la carpeta</value>
+  </data>
+  <data name="EmptyFolder" xml:space="preserve">
+    <value>Esta carpeta está vacía.</value>
+  </data>
+  <data name="ColorModeName" xml:space="preserve">
+    <value>Colorear el gráfico</value>
+  </data>
+  <data name="ColorModeTip" xml:space="preserve">
+    <value>Colorear por categoría o por el último cambio dentro de cada carpeta</value>
+  </data>
+  <data name="ColorByCategory" xml:space="preserve">
+    <value>Color por categoría</value>
+  </data>
+  <data name="ColorByAge" xml:space="preserve">
+    <value>Color por antigüedad</value>
+  </data>
+  <data name="CancelScanTip" xml:space="preserve">
+    <value>Cancelar el escaneo</value>
+  </data>
+  <data name="RecommendationsTitle" xml:space="preserve">
+    <value>Recomendaciones</value>
+  </data>
+  <data name="RecommendationsHint" xml:space="preserve">
+    <value>Marca carpetas enteras o entra en ellas para elegir qué eliminar. Clic derecho para más opciones.</value>
+  </data>
+  <data name="Analyzing" xml:space="preserve">
+    <value>Analizando…</value>
+  </data>
+  <data name="NothingToClean" xml:space="preserve">
+    <value>Nada que limpiar en esta categoría.</value>
+  </data>
+  <data name="ReviewFirstLabel" xml:space="preserve">
+    <value>Revisar primero</value>
+  </data>
+  <data name="LeftoversTitle" xml:space="preserve">
+    <value>Posibles restos de programas</value>
+  </data>
+  <data name="LeftoversHint" xml:space="preserve">
+    <value>Carpetas que no coinciden con ningún programa instalado en Windows y no han cambiado en 60 días. Pueden ser apps de Microsoft Store, programas portables o partidas guardadas: ábrelas antes de eliminarlas.</value>
+  </data>
+  <data name="ChosenByYouLabel" xml:space="preserve">
+    <value>Elegido por ti</value>
+  </data>
+  <data name="GrownLabel" xml:space="preserve">
+    <value>Ha crecido</value>
+  </data>
+  <data name="GrownListName" xml:space="preserve">
+    <value>Carpetas que han crecido</value>
+  </data>
+  <data name="BackToRecommendations" xml:space="preserve">
+    <value>Volver a las recomendaciones</value>
+  </data>
+  <data name="NothingChecked" xml:space="preserve">
+    <value>Nada marcado</value>
+  </data>
+  <data name="CheckSafeButton" xml:space="preserve">
+    <value>Marcar los seguros</value>
+  </data>
+  <data name="DeleteCheckedTip" xml:space="preserve">
+    <value>Eliminar ahora lo marcado</value>
+  </data>
+</root>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryCode" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="CategoryGames" xml:space="preserve">
+    <value>Juegos</value>
+  </data>
+  <data name="CategoryMedia" xml:space="preserve">
+    <value>Documentos y multimedia</value>
+  </data>
+  <data name="CategoryBrowsers" xml:space="preserve">
+    <value>Navegadores</value>
+  </data>
+  <data name="CategoryCommunication" xml:space="preserve">
+    <value>Comunicación</value>
+  </data>
+  <data name="CategoryEditors" xml:space="preserve">
+    <value>Editores e IDE</value>
+  </data>
+  <data name="CategoryPackageCaches" xml:space="preserve">
+    <value>Cachés de paquetes</value>
+  </data>
+  <data name="CategorySdk" xml:space="preserve">
+    <value>SDK y runtimes</value>
+  </data>
+  <data name="CategoryAiModels" xml:space="preserve">
+    <value>Modelos de IA</value>
+  </data>
+  <data name="CategoryVirtualization" xml:space="preserve">
+    <value>Máquinas virtuales</value>
+  </data>
+  <data name="CategoryCloud" xml:space="preserve">
+    <value>Nube</value>
+  </data>
+  <data name="CategoryTemp" xml:space="preserve">
+    <value>Temporales</value>
+  </data>
+  <data name="CategoryPrograms" xml:space="preserve">
+    <value>Programas</value>
+  </data>
+  <data name="CategoryOther" xml:space="preserve">
+    <value>Otros</value>
+  </data>
+  <data name="AgeUnderMonth" xml:space="preserve">
+    <value>Menos de 1 mes</value>
+  </data>
+  <data name="AgeMonths" xml:space="preserve">
+    <value>De 1 a 6 meses</value>
+  </data>
+  <data name="AgeYear" xml:space="preserve">
+    <value>De 6 a 12 meses</value>
+  </data>
+  <data name="AgeYears" xml:space="preserve">
+    <value>De 1 a 3 años</value>
+  </data>
+  <data name="AgeOverYears" xml:space="preserve">
+    <value>Más de 3 años</value>
+  </data>
+  <data name="NoChangeDate" xml:space="preserve">
+    <value>Sin fecha de cambio</value>
+  </data>
+  <data name="LastChange" xml:space="preserve">
+    <value>Último cambio: {0:d MMM yyyy}</value>
+  </data>
+  <data name="FileOne" xml:space="preserve">
+    <value>archivo</value>
+  </data>
+  <data name="FileMany" xml:space="preserve">
+    <value>archivos</value>
+  </data>
+  <data name="MarkedForDeletion" xml:space="preserve">
+    <value>marcado para eliminar</value>
+  </data>
+  <data name="OpenItem" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="EnterItem" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="OpenInExplorerItem" xml:space="preserve">
+    <value>Abrir en el Explorador de archivos</value>
+  </data>
+  <data name="ShowInExplorerItem" xml:space="preserve">
+    <value>Mostrar en el Explorador de archivos</value>
+  </data>
+  <data name="CopyPathItem" xml:space="preserve">
+    <value>Copiar ruta</value>
+  </data>
+  <data name="CopyPathsItem" xml:space="preserve">
+    <value>Copiar rutas</value>
+  </data>
+  <data name="ExportCsvItem" xml:space="preserve">
+    <value>Exportar a CSV…</value>
+  </data>
+  <data name="ChooseFilesItem" xml:space="preserve">
+    <value>Elegir qué archivos eliminar…</value>
+  </data>
+  <data name="ChooseHereItem" xml:space="preserve">
+    <value>Elegir qué eliminar aquí…</value>
+  </data>
+  <data name="RemoveChosenItem" xml:space="preserve">
+    <value>Quitar de «Elegido por ti»</value>
+  </data>
+  <data name="AddChosenItem" xml:space="preserve">
+    <value>Añadir a «Elegido por ti»</value>
+  </data>
+  <data name="RescanFolderItem" xml:space="preserve">
+    <value>Volver a escanear esta carpeta</value>
+  </data>
+  <data name="DeleteItem" xml:space="preserve">
+    <value>Eliminar…</value>
+  </data>
+  <data name="DeleteContentsItem" xml:space="preserve">
+    <value>Eliminar el contenido…</value>
+  </data>
+  <data name="ContentsOf" xml:space="preserve">
+    <value>Contenido de {0}</value>
+  </data>
+  <data name="ClickToGoUp" xml:space="preserve">
+    <value>Clic para subir</value>
+  </data>
+  <data name="Rescanning" xml:space="preserve">
+    <value>Volviendo a escanear {0}…</value>
+  </data>
+  <data name="RescanDiscarded" xml:space="preserve">
+    <value>{0} se eliminó o se volvió a escanear mientras tanto. No se aplicaron los cambios.</value>
+  </data>
+  <data name="FolderUpdated" xml:space="preserve">
+    <value>Carpeta {0} actualizada · {1}</value>
+  </data>
+  <data name="ViewContentsItem" xml:space="preserve">
+    <value>Ver contenido</value>
+  </data>
+  <data name="ShowInChartItem" xml:space="preserve">
+    <value>Mostrar en el gráfico</value>
+  </data>
+  <data name="ShowFolderInChartItem" xml:space="preserve">
+    <value>Mostrar carpeta en el gráfico</value>
+  </data>
+  <data name="CheckAllItem" xml:space="preserve">
+    <value>Marcar todo</value>
+  </data>
+  <data name="UncheckAllItem" xml:space="preserve">
+    <value>Desmarcar todo</value>
+  </data>
+  <data name="DeleteCheckedItem" xml:space="preserve">
+    <value>Eliminar lo marcado…</value>
+  </data>
+</root>

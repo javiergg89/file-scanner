@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SelectionTitle" xml:space="preserve">
+    <value>Duplicate copies</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="FindButton" xml:space="preserve">
+    <value>Find duplicates</value>
+  </data>
+  <data name="FindingFiles" xml:space="preserve">
+    <value>Finding files…</value>
+  </data>
+  <data name="NoneFound" xml:space="preserve">
+    <value>No duplicates of {0} MB or larger.</value>
+    <comment>{0}: minimum size in MB.</comment>
+  </data>
+  <data name="SearchCanceled" xml:space="preserve">
+    <value>Search canceled.</value>
+  </data>
+  <data name="ProgressFiles" xml:space="preserve">
+    <value>{0}… {1:N0} files</value>
+    <comment>{0}: search stage. {1}: files seen so far.</comment>
+  </data>
+  <data name="ProgressBytes" xml:space="preserve">
+    <value>{0}… {1} of {2}</value>
+    <comment>{0}: search stage. {1}, {2}: sizes done and total.</comment>
+  </data>
+  <data name="ProgressCount" xml:space="preserve">
+    <value>{0}… {1:N0} of {2:N0} files</value>
+    <comment>{0}: search stage. {1}, {2}: files done and total.</comment>
+  </data>
+  <data name="NothingToShow" xml:space="preserve">
+    <value>No duplicates to show.</value>
+  </data>
+  <data name="GroupOne" xml:space="preserve">
+    <value>group</value>
+  </data>
+  <data name="GroupMany" xml:space="preserve">
+    <value>groups</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>{0} · {1} can be freed</value>
+    <comment>{0}: number of groups. {1}: size.</comment>
+  </data>
+  <data name="SkippedOne" xml:space="preserve">
+    <value>1 file couldn't be read (in use or access denied)</value>
+  </data>
+  <data name="SkippedMany" xml:space="preserve">
+    <value>{0:N0} files couldn't be read (in use or access denied)</value>
+    <comment>{0}: number of files.</comment>
+  </data>
+  <data name="SearchAgain" xml:space="preserve">
+    <value>Search again to see the files that were excluded.</value>
+  </data>
+  <data name="NoCopiesSelected" xml:space="preserve">
+    <value>No copies checked</value>
+  </data>
+  <data name="SelectedSummary" xml:space="preserve">
+    <value>{0} checked · {1}</value>
+    <comment>{0}: size. {1}: number of copies.</comment>
+  </data>
+  <data name="CopyOne" xml:space="preserve">
+    <value>copy</value>
+  </data>
+  <data name="CopyMany" xml:space="preserve">
+    <value>copies</value>
+  </data>
+  <data name="AlreadyDeletedBy" xml:space="preserve">
+    <value>This copy will already be deleted by "{0}". Uncheck it there to keep it.</value>
+    <comment>{0}: name of the selection that deletes it.</comment>
+  </data>
+  <data name="KeepOneCopy" xml:space="preserve">
+    <value>Leave at least one copy unchecked. If all copies are deleted, the file is lost.</value>
+  </data>
+  <data name="OthersGone" xml:space="preserve">
+    <value>The other copies are no longer on disk or are being deleted.</value>
+  </data>
+  <data name="OthersDeletedBy" xml:space="preserve">
+    <value>The other copies will already be deleted by {0}.</value>
+    <comment>{0}: list of quoted selection names.</comment>
+  </data>
+  <data name="Quoted" xml:space="preserve">
+    <value>"{0}"</value>
+    <comment>{0}: a name inside a sentence.</comment>
+  </data>
+  <data name="ScriptCopied" xml:space="preserve">
+    <value>PowerShell script for the checked copies copied to the clipboard. Review it before you run it.</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Checked duplicate copies</value>
+  </data>
+  <data name="GroupTitleOne" xml:space="preserve">
+    <value>{0} · 1 copy of {1}</value>
+    <comment>{0}: file name. {1}: size of each copy.</comment>
+  </data>
+  <data name="GroupTitleMany" xml:space="preserve">
+    <value>{0} · {1:N0} copies of {2}</value>
+    <comment>{0}: file name. {1}: number of copies. {2}: size of each copy.</comment>
+  </data>
+  <data name="Recoverable" xml:space="preserve">
+    <value>{0} can be freed</value>
+    <comment>{0}: size.</comment>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>MMM d, yyyy</value>
+    <comment>Date format of each copy's last change.</comment>
+  </data>
+  <data name="DeletedBy" xml:space="preserve">
+    <value>Will be deleted by "{0}"</value>
+    <comment>{0}: name of the selection that deletes it.</comment>
+  </data>
+  <data name="LoadFailed" xml:space="preserve">
+    <value>Couldn't read the duplicate exclusions ({0}). The list starts empty; the next exclusion you add replaces that file.</value>
+    <comment>{0}: error message.</comment>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>Couldn't save the exclusions: {0}</value>
+    <comment>{0}: error message.</comment>
+  </data>
+  <data name="ExclusionsButton" xml:space="preserve">
+    <value>Exclusions</value>
+  </data>
+  <data name="ExclusionsButtonCount" xml:space="preserve">
+    <value>Exclusions ({0:N0})</value>
+    <comment>{0}: number of exclusions.</comment>
+  </data>
+  <data name="ExcludeFolderItem" xml:space="preserve">
+    <value>Exclude folder "{0}"</value>
+    <comment>{0}: folder name.</comment>
+  </data>
+  <data name="ExcludeExtensionItem" xml:space="preserve">
+    <value>Exclude {0} files</value>
+    <comment>{0}: file extension, e.g. .mp4.</comment>
+  </data>
+  <data name="IgnoreGroupItem" xml:space="preserve">
+    <value>Not a duplicate: ignore this group</value>
+  </data>
+  <data name="DialogTitle" xml:space="preserve">
+    <value>Duplicate exclusions</value>
+  </data>
+  <data name="CloseButton" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="GroupsTitle" xml:space="preserve">
+    <value>Groups that aren't duplicates</value>
+  </data>
+  <data name="GroupsHint" xml:space="preserve">
+    <value>Marked with "Not a duplicate". They're recognized by content, even if they move to another folder.</value>
+  </data>
+  <data name="NoGroups" xml:space="preserve">
+    <value>None.</value>
+  </data>
+  <data name="FolderHeader" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="FolderPlaceholder" xml:space="preserve">
+    <value>C:\Users\…\Folder</value>
+  </data>
+  <data name="BrowseButton" xml:space="preserve">
+    <value>Browse…</value>
+  </data>
+  <data name="FolderInvalid" xml:space="preserve">
+    <value>Enter a full path, for example C:\Users\your-name\Videos.</value>
+  </data>
+  <data name="AddButton" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="FoldersTitle" xml:space="preserve">
+    <value>Excluded folders</value>
+  </data>
+  <data name="FoldersHint" xml:space="preserve">
+    <value>Duplicates aren't searched for in these folders or their subfolders.</value>
+  </data>
+  <data name="NoFolders" xml:space="preserve">
+    <value>None.</value>
+  </data>
+  <data name="ExtensionsHeader" xml:space="preserve">
+    <value>Extensions</value>
+  </data>
+  <data name="ExtensionInvalidOne" xml:space="preserve">
+    <value>Not a valid extension: {0}. Enter only the last part, for example gz instead of tar.gz.</value>
+    <comment>{0}: the rejected text, quoted.</comment>
+  </data>
+  <data name="ExtensionInvalidMany" xml:space="preserve">
+    <value>Not valid extensions: {0}. Enter only the last part, for example gz instead of tar.gz.</value>
+    <comment>{0}: list of the rejected texts, quoted.</comment>
+  </data>
+  <data name="TypesTitle" xml:space="preserve">
+    <value>Excluded file types</value>
+  </data>
+  <data name="TypesHint" xml:space="preserve">
+    <value>Extensions separated by commas.</value>
+  </data>
+  <data name="NoTypes" xml:space="preserve">
+    <value>None.</value>
+  </data>
+  <data name="RemoveButton" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveName" xml:space="preserve">
+    <value>Remove {0}</value>
+    <comment>{0}: the item the button removes.</comment>
+  </data>
+</root>

@@ -1,0 +1,87 @@
+name: Release
+
+# Publishes a release when a commit to main raises <Version> in Directory.Build.props.
+# Does nothing if tag vX.Y.Z already exists (the commit touched the file without changing the version).
+on:
+  push:
+    branches: [main]
+    paths: [Directory.Build.props]
+
+# Read-only by default; only the release job can write (to create the tag and the release).
+permissions:
+  contents: read
+
+# Two version commits in a row do not race for the same tag.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+      # Provenance attestation for the installer (GitHub OIDC signature).
+      id-token: write
+      attestations: write
+    steps:
+      # Actions pinned by SHA: a tag can move, a commit cannot.
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Leer la versión
+        id: version
+        shell: pwsh
+        run: |
+          $version = ([xml](Get-Content Directory.Build.props)).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
+          if ($version -notmatch '^\d+\.\d+\.\d+$') { throw "Versión no válida en Directory.Build.props: '$version'" }
+          if (git tag --list "v$version") {
+            "La etiqueta v$version ya existe: no hay release nueva."
+            "publish=false" >> $env:GITHUB_OUTPUT
+          } else {
+            "version=$version" >> $env:GITHUB_OUTPUT
+            "publish=true" >> $env:GITHUB_OUTPUT
+          }
+
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+        if: steps.version.outputs.publish == 'true'
+        with:
+          global-json-file: global.json
+
+      - name: Probar
+        if: steps.version.outputs.publish == 'true'
+        run: dotnet run -c Release --project FileScanner.Check
+
+      - name: Publicar
+        if: steps.version.outputs.publish == 'true'
+        shell: pwsh
+        run: |
+          dotnet publish FileScanner/FileScanner.csproj -c Release -o publish -p:Version=${{ steps.version.outputs.version }}
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Crear el instalador
+        if: steps.version.outputs.publish == 'true'
+        shell: pwsh
+        run: |
+          # Pinned version: the compiler determines the shipped .exe. Dependabot does not update it; change it by hand.
+          choco install innosetup --version 6.7.1 -y --no-progress
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          ./install/build-installer.ps1 -Version ${{ steps.version.outputs.version }}
+
+      # Verify that the .exe came from this workflow: gh attestation verify <file> -R javiergg89/file-scanner
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        if: steps.version.outputs.publish == 'true'
+        with:
+          subject-path: dist/FileScanner-Setup-*.exe
+
+      - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        if: steps.version.outputs.publish == 'true'
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          files: dist/FileScanner-Setup-*.exe
+          generate_release_notes: true
+          body: |
+            Download `FileScanner-Setup-${{ steps.version.outputs.version }}.exe` below and run it. See the [README](https://github.com/javiergg89/file-scanner#install) for details.

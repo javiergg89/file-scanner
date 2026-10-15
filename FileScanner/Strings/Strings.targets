@@ -1,0 +1,23 @@
+<Project>
+
+  <!-- Every <Area>.resx in this folder becomes the class FileScanner.Strings.<Area>, generated at build time
+       (no Visual Studio designer). <Area>.es.resx holds the Spanish texts. Imported by FileScanner and FileScanner.Check.
+       LogicalName gives both projects the resource names the generated classes look up, whatever their RootNamespace. -->
+  <ItemGroup>
+    <_StringFile Include="$(MSBuildThisFileDirectory)*.resx" />
+    <_NeutralStringFile Include="$(MSBuildThisFileDirectory)*.resx" Exclude="$(MSBuildThisFileDirectory)*.*.resx" />
+    <EmbeddedResource Remove="@(_StringFile)" />
+    <EmbeddedResource Include="@(_StringFile)" Link="Strings\%(Filename)%(Extension)" LogicalName="FileScanner.Strings.%(Filename).resources" />
+    <EmbeddedResource Update="@(_NeutralStringFile)"
+                      StronglyTypedLanguage="CSharp"
+                      StronglyTypedNamespace="FileScanner.Strings"
+                      StronglyTypedClassName="%(Filename)"
+                      StronglyTypedManifestPrefix="FileScanner.Strings"
+                      StronglyTypedFileName="$(IntermediateOutputPath)Strings.%(Filename).g.cs" />
+  </ItemGroup>
+
+  <!-- WinUI compiles the C# once (XamlPreCompile) before ResGen runs, to resolve x:Bind types; without the classes
+       generated first, every Strings reference fails there. No effect in FileScanner.Check, which has no XAML. -->
+  <Target Name="GenerateStringClasses" BeforeTargets="XamlPreCompile" DependsOnTargets="PrepareResourceNames;ResGen" />
+
+</Project>

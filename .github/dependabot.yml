@@ -1,0 +1,15 @@
+# Update PRs for the workflow actions and NuGet packages.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: monthly
+    # Windows App SDK components ship together: one PR updates them all.
+    groups:
+      windowsappsdk:
+        patterns: ["Microsoft.WindowsAppSDK*"]

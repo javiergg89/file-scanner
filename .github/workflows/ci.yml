@@ -1,0 +1,40 @@
+name: CI
+
+# Builds and runs the checks once per pull request to main (Dependabot's too): on open, reopen or ready for review.
+# Later commits to the same PR do not rerun it; run it by hand from Actions (workflow_dispatch) before merging.
+# Pushes to main do not run it: release.yml runs the checks when the version goes up.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, ready_for_review]
+  workflow_dispatch:
+
+# A rerun for the same PR cancels the run in progress.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # A PR opened as a draft waits for "Ready for review".
+    if: github.event.pull_request.draft != true
+    runs-on: windows-latest
+    steps:
+      # Actions pinned by SHA: a tag can move, a commit cannot.
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5.4.0
+        with:
+          global-json-file: global.json
+
+      # CI=true turns on RestoreLockedMode (Directory.Build.props): restore fails if packages.lock.json does not match.
+      - name: Compilar
+        run: dotnet build FileScanner.slnx -c Release
+
+      - name: Probar
+        run: dotnet run -c Release --no-build --project FileScanner.Check

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ReadingFiles" xml:space="preserve">
+    <value>Leyendo los archivos de la carpeta…</value>
+  </data>
+  <data name="NoFiles" xml:space="preserve">
+    <value>Esta carpeta no tiene archivos.</value>
+  </data>
+  <data name="FileOne" xml:space="preserve">
+    <value>archivo</value>
+  </data>
+  <data name="FileMany" xml:space="preserve">
+    <value>archivos</value>
+  </data>
+  <data name="LargestTop" xml:space="preserve">
+    <value>Los {0:N0} archivos más grandes</value>
+  </data>
+  <data name="LargestSummary" xml:space="preserve">
+    <value>{0} · {1}. Clic derecho en un archivo para más opciones.</value>
+  </data>
+  <data name="IncludedIn" xml:space="preserve">
+    <value>Se elimina con «{0}»</value>
+  </data>
+  <data name="AlreadyIncluded" xml:space="preserve">
+    <value>Este archivo ya se elimina con «{0}». Desmárcalo allí para conservarlo.</value>
+  </data>
+  <data name="OpenItem" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="ShowInExplorerItem" xml:space="preserve">
+    <value>Mostrar en el Explorador de archivos</value>
+  </data>
+  <data name="CopyPathItem" xml:space="preserve">
+    <value>Copiar ruta</value>
+  </data>
+  <data name="ShowFolderInChartItem" xml:space="preserve">
+    <value>Mostrar carpeta en el gráfico</value>
+  </data>
+  <data name="AddToPicksItem" xml:space="preserve">
+    <value>Añadir a «Elegido por ti»</value>
+  </data>
+  <data name="RemoveFromPicksItem" xml:space="preserve">
+    <value>Quitar de «Elegido por ti»</value>
+  </data>
+  <data name="DeleteItem" xml:space="preserve">
+    <value>Eliminar…</value>
+  </data>
+  <data name="NoExtension" xml:space="preserve">
+    <value>Sin extensión</value>
+  </data>
+  <data name="TypeOne" xml:space="preserve">
+    <value>tipo</value>
+  </data>
+  <data name="TypeMany" xml:space="preserve">
+    <value>tipos</value>
+  </data>
+  <data name="TypesSummary" xml:space="preserve">
+    <value>{0} · {1} en {2}</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ColumnSize" xml:space="preserve">
+    <value>Tamaño</value>
+  </data>
+  <data name="ColumnFiles" xml:space="preserve">
+    <value>Archivos</value>
+  </data>
+  <data name="ColumnModified" xml:space="preserve">
+    <value>Modificado</value>
+  </data>
+  <data name="SortByName" xml:space="preserve">
+    <value>Ordenar por nombre</value>
+  </data>
+  <data name="SortBySize" xml:space="preserve">
+    <value>Ordenar por tamaño</value>
+  </data>
+  <data name="SortByFiles" xml:space="preserve">
+    <value>Ordenar por número de archivos</value>
+  </data>
+  <data name="SortByModified" xml:space="preserve">
+    <value>Ordenar por fecha de modificación</value>
+  </data>
+  <data name="SortedDescending" xml:space="preserve">
+    <value>{0}, orden descendente</value>
+  </data>
+  <data name="SortedAscending" xml:space="preserve">
+    <value>{0}, orden ascendente</value>
+  </data>
+  <data name="GrowthRow" xml:space="preserve">
+    <value>{0}, {1}, ahora {2}</value>
+  </data>
+  <data name="GrowthNote" xml:space="preserve">
+    <value>+{0} desde el escaneo de {1}</value>
+  </data>
+  <data name="GrowthInfo" xml:space="preserve">
+    <value>Carpetas que ocupan al menos {0} más que en el escaneo guardado {1}. Clic en una para verla en el gráfico.</value>
+  </data>
+  <data name="NoMatchingFolders" xml:space="preserve">
+    <value>Ninguna carpeta coincide</value>
+  </data>
+  <data name="FolderOpened" xml:space="preserve">
+    <value>Carpeta abierta: {0}, {1}</value>
+  </data>
+  <data name="DropToScan" xml:space="preserve">
+    <value>Escanear esta carpeta</value>
+  </data>
+  <data name="DropNotFolder" xml:space="preserve">
+    <value>Solo se pueden escanear carpetas. Suelta una carpeta.</value>
+  </data>
+  <data name="ExportFileName" xml:space="preserve">
+    <value>Tamaños de {0}</value>
+  </data>
+  <data name="CsvFileType" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>No se pudo guardar {0}: {1}</value>
+  </data>
+  <data name="ExportedOne" xml:space="preserve">
+    <value>1 carpeta exportada a {0}.</value>
+  </data>
+  <data name="ExportedMany" xml:space="preserve">
+    <value>{0:N0} carpetas exportadas a {1}.</value>
+  </data>
+  <data name="FolderFallbackName" xml:space="preserve">
+    <value>carpeta</value>
+  </data>
+  <data name="WatchUnavailable" xml:space="preserve">
+    <value>No se pueden vigilar los cambios en {0}. Vuelve a escanear para verlos.</value>
+  </data>
+  <data name="WatchOverflow" xml:space="preserve">
+    <value>Demasiados cambios a la vez en el disco. Vuelve a escanear para corregir los tamaños.</value>
+  </data>
+  <data name="WatchRestarted" xml:space="preserve">
+    <value>La vigilancia de cambios en el disco falló ({0}) y se ha reiniciado. Si faltan cambios, vuelve a escanear.</value>
+  </data>
+  <data name="DateFormat" xml:space="preserve">
+    <value>d MMM yyyy</value>
+  </data>
+</root>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FilesNode" xml:space="preserve">
+    <value>Archivos</value>
+  </data>
+  <data name="ComputerNode" xml:space="preserve">
+    <value>Este equipo</value>
+  </data>
+  <data name="ScopeHome" xml:space="preserve">
+    <value>Carpeta personal</value>
+  </data>
+  <data name="ScopeHomePlus" xml:space="preserve">
+    <value>Carpeta personal + {0}</value>
+  </data>
+  <data name="ScopeFolders" xml:space="preserve">
+    <value>{0} carpetas</value>
+  </data>
+  <data name="DuplicatesFinding" xml:space="preserve">
+    <value>Buscando archivos</value>
+  </data>
+  <data name="DuplicatesComparingEdges" xml:space="preserve">
+    <value>Comparando principio y final</value>
+  </data>
+  <data name="DuplicatesComparingContent" xml:space="preserve">
+    <value>Comparando contenido</value>
+  </data>
+  <data name="CsvPath" xml:space="preserve">
+    <value>Ruta</value>
+  </data>
+  <data name="CsvSize" xml:space="preserve">
+    <value>Tamaño en bytes</value>
+  </data>
+  <data name="CsvFiles" xml:space="preserve">
+    <value>Archivos</value>
+  </data>
+  <data name="CsvModified" xml:space="preserve">
+    <value>Modificado</value>
+  </data>
+</root>

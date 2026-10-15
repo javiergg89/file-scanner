@@ -1,0 +1,33 @@
+# Build
+bin/
+obj/
+publish/
+dist/
+TestResults/
+*.binlog
+
+# IDE and local tools
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+.claude/settings.local.json
+.remember/
+
+# Secrets never go in the repo. The app needs none; if one is ever needed (e.g. code signing),
+# it goes in GitHub Actions secrets.
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.snk
+*.key
+*.pem
+secrets.json
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

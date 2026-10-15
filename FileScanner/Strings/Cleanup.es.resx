@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ManualTitle" xml:space="preserve">
+    <value>Elegido por ti</value>
+  </data>
+  <data name="CheckAllButton" xml:space="preserve">
+    <value>Marcar todo</value>
+  </data>
+  <data name="CheckSafeButton" xml:space="preserve">
+    <value>Marcar los seguros</value>
+  </data>
+  <data name="CopyScriptAllButton" xml:space="preserve">
+    <value>Copiar script (todo)</value>
+  </data>
+  <data name="CopyScriptButton" xml:space="preserve">
+    <value>Copiar script</value>
+  </data>
+  <data name="DeleteAllCheckedButton" xml:space="preserve">
+    <value>Eliminar todo lo marcado…</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Eliminar…</value>
+  </data>
+  <data name="ScriptCopied" xml:space="preserve">
+    <value>Script de PowerShell copiado al portapapeles. Revísalo antes de ejecutarlo.</value>
+  </data>
+  <data name="AllCheckedTitle" xml:space="preserve">
+    <value>Todo lo marcado en las recomendaciones</value>
+  </data>
+  <data name="VitalRefused" xml:space="preserve">
+    <value>No se puede marcar {0} entera: es una carpeta de Windows o de tu cuenta, o contiene una. Ábrela y marca lo que quieras eliminar.</value>
+  </data>
+  <data name="ItemOne" xml:space="preserve">
+    <value>elemento</value>
+  </data>
+  <data name="ItemMany" xml:space="preserve">
+    <value>elementos</value>
+  </data>
+  <data name="JobWaitingRecycle" xml:space="preserve">
+    <value>En cola para la papelera · {0}</value>
+  </data>
+  <data name="JobWaitingPermanent" xml:space="preserve">
+    <value>En cola para eliminar definitivamente · {0}</value>
+  </data>
+  <data name="JobRunningRecycle" xml:space="preserve">
+    <value>Enviando a la papelera · {0}</value>
+  </data>
+  <data name="JobRunningPermanent" xml:space="preserve">
+    <value>Eliminando definitivamente · {0}</value>
+  </data>
+  <data name="JobDoneRecycle" xml:space="preserve">
+    <value>Enviado a la papelera · {0}</value>
+  </data>
+  <data name="JobDonePermanent" xml:space="preserve">
+    <value>Eliminado definitivamente · {0}</value>
+  </data>
+  <data name="JobCancelledOne" xml:space="preserve">
+    <value>Cancelado · el elemento no se eliminó</value>
+  </data>
+  <data name="JobCancelledMany" xml:space="preserve">
+    <value>Cancelado · {0:N0} de {1:N0} elementos sin eliminar</value>
+  </data>
+  <data name="JobFailedOne" xml:space="preserve">
+    <value>No se pudo eliminar el elemento: está en uso o no tienes permiso.</value>
+  </data>
+  <data name="JobFailedMany" xml:space="preserve">
+    <value>No se pudieron eliminar {0:N0} de {1:N0} elementos: están en uso o no tienes permiso.</value>
+  </data>
+</root>

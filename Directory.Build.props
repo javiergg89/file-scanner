@@ -1,0 +1,24 @@
+<Project>
+
+  <!-- Shared by all projects. Raising <Version> in a commit to main publishes a release
+       (see .github/workflows/release.yml). -->
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <Product>File Scanner</Product>
+    <Company>javiergg89</Company>
+    <Copyright>Copyright (c) 2026 Javier Grimoin González. MIT License.</Copyright>
+    <!-- No commit hash, so the .exe version matches the installer version. -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- Required by the LibraryImport (P/Invoke) source generators. There are no hand-written unsafe blocks. -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- packages.lock.json also pins transitive dependencies and their hashes. In CI (GitHub sets CI=true)
+         restore fails if the file does not match, instead of resolving new versions. -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode Condition="'$(CI)' == 'true'">true</RestoreLockedMode>
+  </PropertyGroup>
+
+</Project>

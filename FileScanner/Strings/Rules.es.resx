@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ItemsOne" xml:space="preserve">
+    <value>1 elemento</value>
+  </data>
+  <data name="ItemsMany" xml:space="preserve">
+    <value>{0:N0} elementos</value>
+  </data>
+  <data name="SizeOfTotal" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="TempFiles" xml:space="preserve">
+    <value>Archivos temporales</value>
+  </data>
+  <data name="NpmCache" xml:space="preserve">
+    <value>Caché de npm</value>
+  </data>
+  <data name="PipUvCaches" xml:space="preserve">
+    <value>Cachés de pip y uv</value>
+  </data>
+  <data name="NuGetHttpCache" xml:space="preserve">
+    <value>Caché HTTP de NuGet</value>
+  </data>
+  <data name="GradleCaches" xml:space="preserve">
+    <value>Cachés de Gradle</value>
+  </data>
+  <data name="YarnCaches" xml:space="preserve">
+    <value>Cachés de Yarn</value>
+  </data>
+  <data name="GoCaches" xml:space="preserve">
+    <value>Cachés de Go</value>
+  </data>
+  <data name="TestBrowsers" xml:space="preserve">
+    <value>Navegadores de Puppeteer y Playwright</value>
+  </data>
+  <data name="CrashDumps" xml:space="preserve">
+    <value>Volcados de memoria</value>
+  </data>
+  <data name="BrowserCaches" xml:space="preserve">
+    <value>Cachés de navegadores (cierra el navegador antes)</value>
+  </data>
+  <data name="AppCaches" xml:space="preserve">
+    <value>Cachés de Discord, Slack, Teams y VS Code (cierra esos programas antes)</value>
+  </data>
+  <data name="JetBrainsCaches" xml:space="preserve">
+    <value>Cachés de JetBrains (cierra el IDE antes)</value>
+  </data>
+  <data name="ShaderCaches" xml:space="preserve">
+    <value>Cachés de shaders de GPU</value>
+  </data>
+  <data name="ThumbnailCache" xml:space="preserve">
+    <value>Caché de miniaturas (cierra sesión para liberarla entera)</value>
+  </data>
+  <data name="WindowsUpdateDownloads" xml:space="preserve">
+    <value>Descargas de Windows Update (requiere permisos de administrador)</value>
+  </data>
+  <data name="WindowsTemp" xml:space="preserve">
+    <value>Archivos temporales de Windows (requiere permisos de administrador)</value>
+  </data>
+  <data name="PnpmStore" xml:space="preserve">
+    <value>Almacén de pnpm (mejor con pnpm store prune)</value>
+  </data>
+  <data name="NuGetPackages" xml:space="preserve">
+    <value>Paquetes NuGet</value>
+  </data>
+  <data name="MavenRepository" xml:space="preserve">
+    <value>Repositorio local de Maven</value>
+  </data>
+  <data name="RustToolchains" xml:space="preserve">
+    <value>Toolchains de Rust</value>
+  </data>
+  <data name="AndroidSdk" xml:space="preserve">
+    <value>Android SDK y emuladores</value>
+  </data>
+  <data name="OllamaModels" xml:space="preserve">
+    <value>Modelos de Ollama</value>
+  </data>
+  <data name="HuggingFaceModels" xml:space="preserve">
+    <value>Modelos de Hugging Face</value>
+  </data>
+  <data name="GameEngineCaches" xml:space="preserve">
+    <value>Cachés de Unreal y Unity</value>
+  </data>
+  <data name="CargoRegistry" xml:space="preserve">
+    <value>Registro de Cargo</value>
+  </data>
+  <data name="VisualStudioInstallerCache" xml:space="preserve">
+    <value>Caché del instalador de Visual Studio (requiere permisos de administrador; mejor desactívala en el instalador)</value>
+  </data>
+  <data name="WindowsOld" xml:space="preserve">
+    <value>Instalación anterior de Windows (elimínala con el Liberador de espacio en disco)</value>
+  </data>
+  <data name="Downloads" xml:space="preserve">
+    <value>Descargas</value>
+  </data>
+  <data name="IdleNodeModules" xml:space="preserve">
+    <value>node_modules en proyectos inactivos</value>
+  </data>
+  <data name="IdleBuilds" xml:space="preserve">
+    <value>Compilaciones en proyectos inactivos</value>
+  </data>
+  <data name="IdleFoldersOne" xml:space="preserve">
+    <value>1 carpeta en un proyecto sin cambios en 30 días</value>
+  </data>
+  <data name="IdleFoldersMany" xml:space="preserve">
+    <value>{0:N0} carpetas en proyectos sin cambios en 30 días</value>
+  </data>
+  <data name="LeftoverPath" xml:space="preserve">
+    <value>{0} · sin cambios desde {1:MMMM 'de' yyyy}</value>
+  </data>
+  <data name="ScriptHeader" xml:space="preserve">
+    <value>Script de limpieza generado por File Scanner. Revísalo antes de ejecutarlo.</value>
+  </data>
+</root>
