@@ -71,10 +71,12 @@ jobs:
           ./install/build-installer.ps1 -Version ${{ steps.version.outputs.version }}
 
       # Portable build: one .exe with the runtimes, Assets and licenses inside; nothing to install or unzip.
+      # Built from scratch: reusing the regular publish's obj\Release gave an .exe that closed at launch.
       - name: Crear el portable
         if: steps.version.outputs.publish == 'true'
         shell: pwsh
         run: |
+          Remove-Item -Recurse -Force FileScanner/obj/Release, FileScanner/bin/Release -ErrorAction SilentlyContinue
           dotnet publish FileScanner/FileScanner.csproj -c Release -o publish-portable -p:Version=${{ steps.version.outputs.version }} `
             -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true `
             -p:EnableCompressionInSingleFile=true -p:DebugType=none

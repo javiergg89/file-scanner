@@ -16,8 +16,11 @@
     <UseWinUI>true</UseWinUI>
     <WindowsPackageType>None</WindowsPackageType>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-    <!-- Puts FileScanner.pri (the compiled XAML) in the publish folder, even without MSIX. -->
+    <!-- Puts resources.pri (the compiled XAML) in the publish folder, even without MSIX. -->
     <EnableMsixTooling>true</EnableMsixTooling>
+    <!-- Without a resources.pri, Windows looks for <exe name>.pri: the portable .exe, renamed on download
+         (FileScanner-x.y.z-portable.exe), then found no XAML and closed at launch. -->
+    <ProjectPriFileName>resources.pri</ProjectPriFileName>
     <!-- Warns about APIs that break in the portable single-file .exe (release.yml). Also keeps packages.lock.json the same
          for both publishes: the analyzer pulls in Microsoft.NET.ILLink.Tasks either way. -->
     <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
